@@ -1,26 +1,36 @@
-package moeblogger
+package main
 
 import (
 
 	// echo
+	"github.com/gorilla/sessions"
+	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
 	// self packages
-	"moeblogger/routes"
+	"moe-blogger/routes"
 )
 
 func main() {
-	// Echo instance
+	// echo instance
 	e := echo.New()
 
-	// Middleware
+	//session store
+	e.Use(middleware.Secure())
+	e.Use(session.Middleware(sessions.NewCookieStore([]byte("3ASIRFGHSRIFGaerwsgkhwerngi456E00R670IA0NR76G0I078K0WR768G0A56R0K580I680G"))))
+
+	// middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+	//csrf
+	e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
+		TokenLookup: "form:_csrf",
+	}))
 
-	// Routes
+	// routes
 	routes.Routes(e)
 
-	// Start server
+	// start server
 	e.Logger.Fatal(e.Start(":1323"))
 }

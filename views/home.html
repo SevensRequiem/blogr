@@ -1,0 +1,42 @@
+{{define "content"}}
+<div id="content">
+  <h1>Blog</h1>
+  <div id="blog">
+    {{range .Blogs}}
+    <div class="blog-post">
+      <img src="/assets/blog/{{.Image}}" alt="{{.Title}}">
+      <h2>{{.Title}}</h2>
+      <p>{{.Content}}</p>
+    </div>
+    {{end}}
+
+    </div>
+</div>
+<style>
+    #content {
+        width: 100%;
+    }
+    
+    #blog {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .blog-post {
+        width: 30%;
+        border: 1px solid #ccc;
+    }
+    
+    .blog-post img {
+        width: 100%;
+    }
+    
+    .blog-post h2 {
+        font-size: 20px;
+    }
+    
+    .blog-post p {
+        font-size: 16px;
+    }
+</style>
+{{end}}

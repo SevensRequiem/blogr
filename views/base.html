@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moe-Blogger</title>
+</head>
+<body>
+<main>
+    <side>
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+        <span>Made by requiem.moe</span>
+    </side>
+    <section>
+        {{template "content" .}}
+    </section>
+</main>
+</body>
+</html>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    main {
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+    side {
+        height: 100vh;
+        width: 20%;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    side span {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        background-color: #333;
+        color: #fff;
+    }
+    section {
+        width: 80%;
+        margin: 0;
+        padding: 0;
+    }
+</style>

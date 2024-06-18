@@ -1,25 +1,24 @@
 package routes
 
 import (
+	"moe-blogger/auth"
+	"moe-blogger/home"
+
 	"github.com/labstack/echo/v4"
 )
 
 func Routes(e *echo.Echo) {
 	// Home
 	e.GET("/", home.Home)
-	e.GET("/home", home.Home)
 
 	// Auth
-	e.GET("/login", home.Login)
-	e.POST("/login", auth.Login)
-	e.GET("/logout", auth.Logout)
+	e.GET("/login", auth.LoginHandler)
+	e.GET("/auth/callback", auth.CallbackHandler)
+	e.GET("/logout", auth.LogoutHandler)
 
 	// Blog
-	e.GET("/blog", blog.Render)
-	e.GET("/blog/:id", blog.RenderPost)
-
-	// RSS
-	e.GET("/rss", rss.RSS)
+	e.GET("/blog", home.BlogHandler)
+	e.GET("/blog/:id", home.BlogPostHandler)
 
 	// Static
 	e.Static("/static", "static")

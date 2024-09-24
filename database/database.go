@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"moe-blogger/logs"
+	"blogr.moe/logs"
 
 	"github.com/go-gorm/caches/v4"
 	"github.com/joho/godotenv"

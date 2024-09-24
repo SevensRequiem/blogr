@@ -1,156 +1,259 @@
 package auth
 
 import (
-	"fmt"
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/base64"
 	"log"
 	"net/http"
 	"os"
-	"strings"
+	"time"
 
-	"github.com/gorilla/sessions"
+	"blogr.moe/blog"
+	"blogr.moe/database"
+	"blogr.moe/logs"
+	"github.com/google/uuid"
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
-	"golang.org/x/oauth2"
-	"gorm.io/gorm"
-
-	"encoding/gob"
-	"encoding/json"
-
-	"moe-blogger/database"
 )
-
-var oauthConf *oauth2.Config
 
 var db = database.DB
 
-func init() {
-	gob.Register(User{})
-
-	DiscordClientID := os.Getenv("DISCORD_CLIENT_ID")
-	DiscordClientSecret := os.Getenv("DISCORD_CLIENT_SECRET")
-	DiscordRedirectURI := os.Getenv("DISCORD_REDIRECT_URI")
-	oauthConf = &oauth2.Config{
-		ClientID:     DiscordClientID,
-		ClientSecret: DiscordClientSecret,
-		RedirectURL:  DiscordRedirectURI,
-		Endpoint: oauth2.Endpoint{
-			AuthURL:  "https://discord.com/api/oauth2/authorize",
-			TokenURL: "https://discord.com/api/oauth2/token",
-		},
-		Scopes: []string{"identify"},
-	}
-	// Assuming database.DB is a *gorm.DB instance and properly initialized
-	db.AutoMigrate(&User{})
-	userid := 228343232520519680
-	db = db.Exec("UPDATE users SET groups = ? WHERE id = ?", "admin", userid)
-}
-
 type User struct {
-	ID          string `json:"id"`
-	Username    string `json:"username"`
-	Groups      string `json:"groups"`
-	DateCreated string `json:"date_created"`
-	DoesExist   bool   `json:"does_exist"`
+	ID            uint   `json:"id" gorm:"primary_key"`
+	UUID          string `json:"uuid"`
+	Name          string `json:"name"`
+	Email         string `json:"email"`
+	Username      string `json:"username"`
+	Avatar        string `json:"avatar"`
+	LastLogin     string `json:"last_login"`
+	DateCreated   string `json:"date_created"`
+	Reputation    int    `json:"reputation"`
+	TotalViews    int    `json:"total_views"`
+	Group         groups
+	Blog          []blog.Blog
+	Premium       bool   `json:"premium"`
+	TransactionID string `json:"transaction_id"`
+	SubDomain     string `json:"sub_domain"`
 }
 
-type LoggedInUser struct {
-	ID         string `json:"id"`
-	Username   string `json:"username"`
-	IsLoggedIn bool   `json:"is_logged_in"`
+type groups struct {
+	ID   uint   `json:"id" gorm:"primary_key"`
+	Name string `json:"name"`
 }
 
-func CallbackHandler(c echo.Context) error {
-	code := c.QueryParam("code")
-	token, err := oauthConf.Exchange(oauth2.NoContext, code)
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err.Error())
-	}
-
-	client := oauthConf.Client(oauth2.NoContext, token)
-	resp, err := client.Get("https://discord.com/api/users/@me")
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err.Error())
-	}
-	defer resp.Body.Close()
-
-	user := User{}
-	err = json.NewDecoder(resp.Body).Decode(&user)
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err.Error())
-	}
-	fmt.Println(user)
-	db := database.DB
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = db.Where("id = ?", user.ID).First(&user).Error
-	if err != nil {
-		if err == gorm.ErrRecordNotFound {
-			db = db.Create(&user)
-			if db.Error != nil {
-				return c.JSON(http.StatusInternalServerError, db.Error)
-			}
-		} else {
-			return c.JSON(http.StatusInternalServerError, err)
-		}
-	}
-
-	sess, err := session.Get("session", c)
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, fmt.Sprintf("Failed to get session: %s", err.Error()))
-	}
-	sess.Options = &sessions.Options{
-		Path:     "/",
-		MaxAge:   86400 * 7,
-		HttpOnly: true,
-	}
-	sess.Values["user"] = user
-
-	err = sess.Save(c.Request(), c.Response())
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, fmt.Sprintf("Failed to save session: %s", err.Error()))
-	}
-
-	return c.Redirect(http.StatusTemporaryRedirect, "/")
-}
-func LoginHandler(c echo.Context) error {
-	url := oauthConf.AuthCodeURL("state", oauth2.AccessTypeOffline)
-	return c.Redirect(http.StatusTemporaryRedirect, url)
+type UserLogin struct {
+	ID       uint   `json:"id"`
+	UUID     string `json:"uuid"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
-func LogoutHandler(c echo.Context) error {
-	sess, _ := session.Get("session", c)
-	sess.Options = &sessions.Options{MaxAge: -1}
-	sess.Save(c.Request(), c.Response())
-	return c.Redirect(http.StatusTemporaryRedirect, "/")
+func (u *User) GetUser(username string) error {
+	if err := db.Where("username = ?", username).First(&u).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func GetUserByUsername(username string) User {
+	var user User
+	db.Where("username = ?", username).First(&user)
+	user = User{
+		ID:          user.ID,
+		Name:        user.Name,
+		Email:       user.Email,
+		Username:    user.Username,
+		Avatar:      user.Avatar,
+		LastLogin:   user.LastLogin,
+		DateCreated: user.DateCreated,
+		Reputation:  user.Reputation,
+		TotalViews:  user.TotalViews,
+		Group:       user.Group,
+		Blog:        user.Blog,
+		Premium:     user.Premium,
+	}
+	return user
+}
+
+func GetUser(uuid string) User {
+	var user User
+	db.Where("uuid = ?", uuid).First(&user)
+	user = User{
+		ID:          user.ID,
+		UUID:        user.UUID,
+		Name:        user.Name,
+		Email:       user.Email,
+		Username:    user.Username,
+		Avatar:      user.Avatar,
+		LastLogin:   user.LastLogin,
+		DateCreated: user.DateCreated,
+		Reputation:  user.Reputation,
+		TotalViews:  user.TotalViews,
+		Group:       user.Group,
+		Blog:        user.Blog,
+		Premium:     user.Premium,
+	}
+	return user
+}
+func checkPassword(password string, user UserLogin) bool {
+	db.Where("username = ?", user.Username).First(&user)
+	decrypted := DecodePassword(user.Password)
+	return password == decrypted
+}
+
+func encryptPassword(password string) string {
+	enc := os.Getenv("ENCRYPT_KEY")
+	h := hmac.New(sha256.New, []byte(enc))
+	h.Write([]byte(password))
+	encpass := h.Sum(nil)
+	encodedPass := base64.StdEncoding.EncodeToString(encpass)
+	logs.Debug("Encoded Pass for new user")
+	return encodedPass
+}
+
+func DecodePassword(encrypted_password string) string {
+	enc := os.Getenv("ENCRYPT_KEY")
+	decoded, err := base64.StdEncoding.DecodeString(encrypted_password)
+
+	if err != nil {
+		log.Println(err)
+		return ""
+	}
+	h := hmac.New(sha256.New, []byte(enc))
+	h.Write(decoded)
+	encpass := h.Sum(nil)
+	logs.Debug("Decoded Password for user")
+	return base64.StdEncoding.EncodeToString(encpass)
+}
+
+func getFullUser(uuid string) User {
+	var user User
+	db.Where("uuid = ?", uuid).First(&user)
+	user = User{
+		ID:          user.ID,
+		UUID:        user.UUID,
+		Name:        user.Name,
+		Email:       user.Email,
+		Username:    user.Username,
+		Avatar:      user.Avatar,
+		LastLogin:   user.LastLogin,
+		DateCreated: user.DateCreated,
+		Reputation:  user.Reputation,
+		TotalViews:  user.TotalViews,
+		Group:       user.Group,
+		Blog:        user.Blog,
+		Premium:     user.Premium,
+	}
+	return user
+}
+
+func (u *UserLogin) LoginHandler(username string, password string, c echo.Context, uf *User) bool {
+	if err := db.Where("username = ?", username).First(&u).Error; err != nil {
+		return false
+	}
+	if checkPassword(password, *u) {
+		sess, _ := session.Get("session", c)
+		sess.Values["user"] = getFullUser(uf.UUID)
+		sess.Save(c.Request(), c.Response())
+		return true
+	}
+	return false
+}
+
+func (u *User) CreateUser(c echo.Context) error {
+	name := c.FormValue("name")
+	email := c.FormValue("email")
+	username := c.FormValue("username")
+	password := c.FormValue("password")
+	uuid := genuuid()
+	encpass := encryptPassword(password)
+	user := User{
+		UUID:        uuid,
+		Name:        name,
+		Email:       email,
+		Username:    username,
+		DateCreated: time.Now().String(),
+		Reputation:  0,
+		TotalViews:  0,
+		Group: groups{
+			Name: "User",
+		},
+		Premium: false,
+	}
+	userlogin := UserLogin{
+		UUID:     uuid,
+		Username: username,
+		Password: encpass,
+	}
+	db.Create(&user)
+	db.Create(&userlogin)
+	return c.JSON(http.StatusOK, user)
+}
+
+func genuuid() string {
+	uuid := uuid.New()
+	return uuid.String()
 }
 
 func AdminCheck(c echo.Context) bool {
-	db := database.DB
-
-	sess, err := session.Get("session", c)
-	if err != nil {
-		return false
+	sess, _ := session.Get("session", c)
+	user := sess.Values["user"].(User)
+	if user.Group.Name == "Admin" {
+		return true
 	}
+	return false
+}
 
-	userSessionValue, ok := sess.Values["user"]
-	if !ok {
-		return false
+func (u *User) UpdateUser(c echo.Context) error {
+	sess, _ := session.Get("session", c)
+	user := sess.Values["user"].(User)
+	name := c.FormValue("name")
+	email := c.FormValue("email")
+	avatar := c.FormValue("avatar")
+	u.Name = name
+	u.Email = email
+	u.Avatar = avatar
+	db.Model(&user).Updates(u)
+	return c.JSON(http.StatusOK, user)
+}
+
+func (u *User) DeleteUser(c echo.Context) error {
+	sess, _ := session.Get("session", c)
+	user := sess.Values["user"].(User)
+	db.Delete(&user)
+	return c.JSON(http.StatusOK, user)
+}
+
+func (u *User) Logout(c echo.Context) error {
+	sess, _ := session.Get("session", c)
+	sess.Options.MaxAge = -1
+	sess.Save(c.Request(), c.Response())
+	return c.JSON(http.StatusOK, "Logged Out")
+}
+
+func IsLoggedIn(c echo.Context) bool {
+	sess, _ := session.Get("session", c)
+	if sess.Values["user"] != nil {
+		return true
 	}
+	return false
+}
 
-	user, ok := userSessionValue.(User)
-	if !ok {
-		return false
-	}
+func GetUserSession(c echo.Context) User {
+	sess, _ := session.Get("session", c)
+	user := sess.Values["user"].(User)
+	return user
+}
 
-	var userFromDB User
-	if err := db.Where("id = ?", user.ID).First(&userFromDB).Error; err != nil {
-		return false
-	}
+func GetUserSessionID(c echo.Context) string {
+	sess, _ := session.Get("session", c)
+	user := sess.Values["user"].(User)
+	return user.UUID
+}
 
-	if !strings.Contains(userFromDB.Groups, "admin") {
-		return false
-	}
-
-	return true
+func GetUserSessionUserName(c echo.Context) string {
+	sess, _ := session.Get("session", c)
+	user := sess.Values["user"].(User)
+	return user.Username
 }

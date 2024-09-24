@@ -1,42 +1,175 @@
 {{define "content"}}
-<div id="content">
-  <h1>Blog</h1>
-  <div id="blog">
-    {{range .Blogs}}
-    <div class="blog-post">
-      <img src="/assets/blog/{{.Image}}" alt="{{.Title}}">
-      <h2>{{.Title}}</h2>
-      <p>{{.Content}}</p>
+<div id="home">
+    <div id="intro">
+    <span id="subintro">The best blogging platform on the web</span>
+    <p>
+        Blogr is an open source blog platform that allows you to create your own blog.
+    </p>
+    <div id="stats">
+        <p>Blogr has over {{.Users}} users and {{.Posts}} posts.</p>
     </div>
-    {{end}}
-
+    </div>
+<div id="features">
+    <div class="feature">
+    <h2>Features</h2>
+    <ul>
+        <li>Reputation System</li>
+        <li>Comments</li>
+        <li>Tags</li>
+        <li>Search</li>
+        <li>Markdown Support</li>
+        <li>And More...</li>
+    </ul>
+</div>
+<div class="feature">
+    <h2>Premium Features</h2>
+    <ul>
+        <li>Ad-Free Experience</li>
+        <li>Larger Upload Limits</li>
+        <li>Custom Subdomain</li>
+        <li>Custom CSS</li>
+        <li>And More...</li>
+    </ul>
     </div>
 </div>
+    <h2>Get Started</h2>
+    <a href="/register"><button>Register</button></a>
+    <p>Already have an account? <a href="/login">Login</a></p>
+
+
+<div id="latestusers">
+    <h2>Latest Blogs</h2>
+    <ul>
+        {{range .LatestBlogs}}
+        <li><a href="/blog/{{.ID}}">{{.Title}}</a></li>
+        {{end}}
+    </ul>
+
+</div>
+
+
+</div>
+
 <style>
-    #content {
-        width: 100%;
+    #home {
+        margin: 0 auto;
+        width: 80%;
+        text-align: center;
+        text-shadow: 1px 3px 14px #00A9A5;
     }
-    
-    #blog {
+    #home h1 {
+        margin-top: 0;
+    }
+    #home h2 {
+        margin-top: 2rem;
+    }
+    #home ul {
+        list-style-type: none;
+        margin-top: 0;
+        padding: 0;
+    }
+    #home li {
+        margin-top: 0.5rem;
+    }
+    #home p {
+        margin-top: 0.5rem;
+    }
+    #home a {
+        color: #00A9A5;
+    }
+    #home a:hover {
+        text-decoration: none;
+    }
+    #home a:visited {
+        color: #00A9A5;
+    }
+    #home a:active {
+        color: #00A9A5;
+    }
+
+    #intro {
+        margin-top: 9rem;
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
     }
-    
-    .blog-post {
-        width: 30%;
-        border: 1px solid #ccc;
+
+    #intro h1 {
+        color: #00a94c;
+        font-size: 5rem;
+        font-weight: bold;
     }
-    
-    .blog-post img {
-        width: 100%;
+
+    #subintro {
+        color: #00a94c;
+        font-size: 3rem;
+        font-weight: bold;
     }
-    
-    .blog-post h2 {
-        font-size: 20px;
+
+
+
+    #features {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        margin-top: 2rem;
     }
-    
-    .blog-post p {
-        font-size: 16px;
+
+    #home button {
+        padding: 0.5rem 1rem;
+        border: 1px solid #00A9A5;
+        border-radius: 5px;
+        background-color: #00A9A5;
+        color: white;
+        margin-top: 1rem;
+        cursor: pointer;
+    }
+
+    #home button a {
+        color: white;
+        text-decoration: none;
+    }
+
+    #home button a:hover {
+        text-decoration: none;
+    }
+
+    #home button a:visited {
+        color: white;
+    }
+
+    #home button:hover {
+        background-color: #007D79;
+    }
+
+    #home button:active {
+        background-color: #005D59;
+    }
+
+    #stats {
+        margin-top: 2rem;
+    }
+
+    #latestusers {
+        margin-top: 2rem;
+    }
+
+    #latestusers ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    #latestusers li {
+        margin-top: 0.5rem;
+    }
+
+    #latestusers a {
+        color: #00A9A5;
+    }
+
+    #latestusers a:hover {
+        text-decoration: none;
     }
 </style>
 {{end}}

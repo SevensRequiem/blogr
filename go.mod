@@ -1,14 +1,14 @@
-module moe-blogger
+module blogr.moe
 
 go 1.22.2
 
 require (
 	github.com/go-gorm/caches/v4 v4.0.5
+	github.com/google/uuid v1.6.0
 	github.com/gorilla/sessions v1.3.0
 	github.com/joho/godotenv v1.5.1
 	github.com/labstack/echo-contrib v0.17.1
 	github.com/labstack/echo/v4 v4.12.0
-	golang.org/x/oauth2 v0.21.0
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 	gorm.io/driver/mysql v1.5.7
 	gorm.io/gorm v1.25.10

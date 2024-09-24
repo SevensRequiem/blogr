@@ -1,0 +1,1 @@
+FATAL: 2024/09/24 01:40:28 database.go:85: Failed to connect to database: %v dial tcp 127.0.0.1:0: connect: connection refused

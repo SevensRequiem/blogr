@@ -21,6 +21,8 @@ import (
 
 var oauthConf *oauth2.Config
 
+var db = database.DB
+
 func init() {
 	gob.Register(User{})
 
@@ -38,12 +40,9 @@ func init() {
 		Scopes: []string{"identify"},
 	}
 	// Assuming database.DB is a *gorm.DB instance and properly initialized
-	database.Connect()
-	db := database.DB
 	db.AutoMigrate(&User{})
 	userid := 228343232520519680
 	db = db.Exec("UPDATE users SET groups = ? WHERE id = ?", "admin", userid)
-	database.Close()
 }
 
 type User struct {
@@ -61,7 +60,6 @@ type LoggedInUser struct {
 }
 
 func CallbackHandler(c echo.Context) error {
-	database.Connect()
 	code := c.QueryParam("code")
 	token, err := oauthConf.Exchange(oauth2.NoContext, code)
 	if err != nil {
@@ -112,7 +110,6 @@ func CallbackHandler(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, fmt.Sprintf("Failed to save session: %s", err.Error()))
 	}
-	database.Close()
 
 	return c.Redirect(http.StatusTemporaryRedirect, "/")
 }
@@ -129,7 +126,6 @@ func LogoutHandler(c echo.Context) error {
 }
 
 func AdminCheck(c echo.Context) bool {
-	database.Connect()
 	db := database.DB
 
 	sess, err := session.Get("session", c)
@@ -156,6 +152,5 @@ func AdminCheck(c echo.Context) bool {
 		return false
 	}
 
-	database.Close()
 	return true
 }

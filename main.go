@@ -3,7 +3,11 @@ package main
 import (
 
 	// echo
+	"log"
+	"os"
+
 	"github.com/gorilla/sessions"
+	"github.com/joho/godotenv"
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -13,12 +17,16 @@ import (
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
 	// echo instance
 	e := echo.New()
-
+	secret := os.Getenv("SECRET")
 	//session store
 	e.Use(middleware.Secure())
-	e.Use(session.Middleware(sessions.NewCookieStore([]byte("3ASIRFGHSRIFGaerwsgkhwerngi456E00R670IA0NR76G0I078K0WR768G0A56R0K580I680G"))))
+	e.Use(session.Middleware(sessions.NewCookieStore([]byte(secret))))
 
 	// middleware
 	e.Use(middleware.Logger())
@@ -31,6 +39,8 @@ func main() {
 	// routes
 	routes.Routes(e)
 
+	// port
+	PORT := os.Getenv("PORT")
 	// start server
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":" + PORT))
 }

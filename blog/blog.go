@@ -28,64 +28,50 @@ type Comments struct {
 	Date     string `json:"date"`
 }
 
+var db = database.DB
+
 func init() {
-	database.Connect()
-	database.DB.AutoMigrate(&Blog{})
-	database.DB.AutoMigrate(&Comments{})
-	database.Close()
+	db.AutoMigrate(&Blog{})
+	db.AutoMigrate(&Comments{})
 }
 
 func GetBlogs(num int) []Blog {
-	database.Connect()
 	var blogs []Blog
 	if num == 0 {
-		database.DB.Find(&blogs)
+		db.Find(&blogs)
 	} else {
-		database.DB.Limit(num).Find(&blogs)
+		db.Limit(num).Find(&blogs)
 	}
-	database.Close()
 
 	return blogs
 }
 
 func GetBlog(id string) Blog {
-	database.Connect()
 	var blog Blog
-	database.DB.Where("id = ?", id).First(&blog)
-	database.Close()
+	db.Where("id = ?", id).First(&blog)
 	return blog
 }
 
 func CreateBlog(blog Blog) {
-	database.Connect()
-	database.DB.Create(&blog)
-	database.Close()
+	db.Create(&blog)
 }
 
 func UpdateBlog(blog Blog) {
-	database.Connect()
-	database.DB.Save(&blog)
-	database.Close()
+	db.Save(&blog)
 }
 
 func DeleteBlog(blog Blog) {
-	database.Connect()
-	database.DB.Delete(&blog)
-	database.Close()
+	db.Delete(&blog)
 }
 
 func GetComments(blogID string) []Comments {
-	database.Connect()
 	var comments []Comments
-	database.DB.Where("blog_id = ?", blogID).Find(&comments)
-	database.Close()
+	db.Where("blog_id = ?", blogID).Find(&comments)
 	return comments
 }
 
 func CreateComment(comment Comments) {
-	database.Connect()
-	database.DB.Create(&comment)
-	database.Close()
+	db.Create(&comment)
 }
 
 func NewPostHandler(c echo.Context) error {

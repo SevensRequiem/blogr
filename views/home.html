@@ -3,39 +3,26 @@
     <div id="intro">
     <span id="subintro">The best blogging platform on the web</span>
     <p>
-        Blogr is an open source blog platform that allows you to create your own blog.
+        Blogr is an open source and free, blog platform.
     </p>
     <div id="stats">
-        <p>Blogr has over {{.Users}} users and {{.Posts}} posts.</p>
+        <p>Blogr has over {{.UserCount}} users and {{.Posts}} posts.</p>
     </div>
     </div>
 <div id="features">
     <div class="feature">
-    <h2>Features</h2>
-    <ul>
-        <li>Reputation System</li>
-        <li>Comments</li>
-        <li>Tags</li>
-        <li>Search</li>
-        <li>Markdown Support</li>
-        <li>And More...</li>
-    </ul>
-</div>
-<div class="feature">
-    <h2>Premium Features</h2>
-    <ul>
-        <li>Ad-Free Experience</li>
-        <li>Larger Upload Limits</li>
-        <li>Custom Subdomain</li>
-        <li>Custom CSS</li>
-        <li>And More...</li>
-    </ul>
+        <h2>Easy to use</h2>
+        <p>Blogr is easy to use and has a simple interface.</p>
+    </div>
+    <div class="feature">
+        <h2>Customizable</h2>
+        <p>Blogr allows you to customize your blog with themes and plugins.</p>
+    </div>
+    <div class="feature">
+        <h2>Open Source</h2>
+        <p>Blogr is open source and free to use.</p>
     </div>
 </div>
-    <h2>Get Started</h2>
-    <a href="/register"><button>Register</button></a>
-    <p>Already have an account? <a href="/login">Login</a></p>
-
 
 <div id="latestusers">
     <h2>Latest Blogs</h2>
@@ -44,10 +31,7 @@
         <li><a href="/blog/{{.ID}}">{{.Title}}</a></li>
         {{end}}
     </ul>
-
 </div>
-
-
 </div>
 
 <style>
@@ -112,8 +96,33 @@
         display: flex;
         justify-content: space-around;
         flex-direction: row;
+        flex-wrap: wrap;
         margin-top: 2rem;
     }
+
+    .feature {
+        min-width: 200px;
+        width: 200px;
+        padding: 1rem;
+        background: linear-gradient(to bottom, #00a9a675, #030303);
+        border-radius: 25px;
+    }
+
+    .feature:hover{
+        background: linear-gradient(to bottom, #00a9a6, #030303);
+        border: 2px solid #00a9a6;
+    }
+
+    .feature h2 {
+        color: #ffffff;
+    }
+
+    .feature p {
+        color: #ffffff;
+        font-style: italic;
+    }
+
+
 
     #home button {
         padding: 0.5rem 1rem;

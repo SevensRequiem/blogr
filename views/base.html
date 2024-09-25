@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogr - A simple blog application</title>
+    <script src="https://kit.fontawesome.com/c0dbd754ad.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Blogr: A simple blog application</title>
 </head>
 <body>
 <main>
     <header>
-    <h1>Blogr    <span id="subtitle">A simple blog application</span></h1>
+    <h1><span class="icon">
+        <i class="fa-solid fa-book"></i></span>Blogr <span id="subtitle">A simple blog application</span></h1>
     <div id="navcontainer">
     <nav>
         <ul>
@@ -25,13 +28,129 @@
             <input type="submit" value="Search">
         </form>
     </div>
+    {{if not .User}}
     <nav>
         <ul>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+            <li><a href="#" onclick="loginForm()">Login</a></li>
+            <li><a href="#" onclick="registerForm()">Register</a></li>
         </ul>
     </nav>
+    {{end}}
     </div>
+    {{if not .User}}
+    <div id="registerform">
+        <h2>Register</h2>
+        <form id="registerForm" action="/register" method="post">
+            <input type="text" name="regemail" placeholder="Email">
+            <input type="text" name="regusername" placeholder="Username">
+            <input type="password" name="regpassword" placeholder="Password" id="password">
+            <button type="submit">Register</button>
+            <div id="registerStatus"></div>
+        </form>
+    </div>
+    <div id="loginform">
+        <h2>Login</h2>
+        <form id="loginForm" action="/login" method="post">
+            <input type="text" name="loginusername" placeholder="Username">
+            <input type="password" name="loginpassword" placeholder="Password" id="password">
+            <button type="submit">Login</button>
+            <a href="#">Forgot password?</a>
+            <div id="loginStatus"></div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let loginusername = document.querySelector('input[name="loginusername"]').value;
+            let loginpassword = document.querySelector('input[name="loginpassword"]').value;
+            
+            axios.post('/login', {
+                username: loginusername,
+                password: loginpassword
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response) {
+                if (response.data.success) {
+                    window.location.href = '/';
+                } else {
+                    document.getElementById('loginStatus').innerHTML = response.data.message;
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let regemail = document.querySelector('input[name="regemail"]').value;
+            let regusername = document.querySelector('input[name="regusername"]').value;
+            let regpassword = document.querySelector('input[name="regpassword"]').value;
+            
+            axios.post('/register', {
+                email: regemail,
+                username: regusername,
+                password: regpassword
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response) {
+                if (response.data.success) {
+                    window.location.href = '/';
+                } else {
+                    document.getElementById('loginStatus').innerHTML = response.data.message;
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+        });
+
+        function loginForm() {
+            if (document.getElementById('loginform').style.display === 'flex') {
+                document.getElementById('loginform').style.display = 'none';
+            } else {
+                document.getElementById('loginform').style.display = 'flex';
+                document.getElementById('registerform').style.display = 'none';
+            }
+        }
+        function registerForm() {
+            if (document.getElementById('registerform').style.display === 'flex') {
+                document.getElementById('registerform').style.display = 'none';
+            } else {
+                document.getElementById('registerform').style.display = 'flex';
+                document.getElementById('loginform').style.display = 'none';
+            }
+        }
+    </script>
+    {{else if .User}}
+    <div id="user">
+        <span>Welcome, {{.User.Username}} <i class="fa-solid fa-chevron-down"></i></span>
+        <div id="userdropdown">
+            <a href="/user/profile">Profile</a>
+            <a href="/user/settings">Settings</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+        <script>
+            function logout() {
+                axios.get('/logout')
+                .then(function(response) {
+                    if (response.data.success) {
+                        window.location.href = '/';
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+            }
+        </script>
+    </div>
+    {{end}}
     </header>
     <hr>
     <div id="content">
@@ -46,12 +165,16 @@
 </html>
 <style>
     @font-face {
-        font-family: 'Play';
-        src: url(/assets/Play-Regular.ttf) format('truetype');
+        font-family: 'rabt';
+        src: url(/assets/whitrabt1.ttf) format('truetype');
     }
     * {
-        font-family: 'Play', sans-serif;
+        font-family: 'rabt', Arial, sans-serif;
         color: #fff;
+    }
+    .icon {
+        color: #00A9A5;
+        margin: 0 0.5rem;
     }
     body {
         font-family: Arial, sans-serif;
@@ -129,6 +252,50 @@
         justify-content: space-between;
         width: 700px;
     }
+
+    #loginform, #registerform {
+        position: fixed;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        right: 50%;
+        top: 50%;
+        transform: translate(50%, -50%);
+        width: 300px;
+        border: 1px solid #00A9A5;
+        background-color: #000000be;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    #loginform form, #registerform form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    #loginform input[type="text"], 
+    #loginform input[type="password"], 
+    #registerform input[type="text"], 
+    #registerform input[type="password"] {
+        border-radius: 5px;
+        border: 1px solid #000;
+        color: #000;
+    }
+
+    #loginform button, 
+    #registerform button {
+        border-radius: 5px;
+        border: 1px solid #000;
+        background-color: #00A9A5;
+        color: white;
+    }
+
+    #loginform button:hover, #registerform button:hover {
+        background-color: #007D79;
+    }
     hr {
         margin: 0;
         height: 2px;
@@ -157,4 +324,57 @@
     footer p {
         margin: 0;
     }
+
+    #user {
+        position: relative;
+    }
+
+    #user span {
+        cursor: pointer;
+    }
+
+    #userdropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #000;
+        border: 1px solid #00A9A5;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    #user a {
+        display: block;
+        color: white;
+        text-decoration: none;
+    }
+
+    #user i {
+        width: 5px;
+        height: 5px;
+        margin-left: 5px;
+    }
+
+    #user a:hover {
+        color: #00A9A5;
+    }
+
+    #user:hover #userdropdown {
+        display: block;
+    }
+
+    #user a {
+        margin-bottom: 5px;
+    }
+    
+    #user a:last-child {
+        margin-bottom: 0;
+    }
+
+    #user a:hover {
+        background-color: #00A9A5;
+    }
+
+
 </style>

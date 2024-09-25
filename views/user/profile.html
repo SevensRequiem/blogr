@@ -1,0 +1,88 @@
+{{define "content"}}
+<div class="profilecontainer">
+    <div class="sidebar">
+        <a href="/user/posts">Posts</a>
+        <a href="/user/comments">Comments</a>
+        <a href="/user/settings">Settings</a>
+        
+    </div>
+    <div class="profile">
+        <h1>Profile</h1>
+        <div class="profileinfo">
+            <div class="profileinfoitem">
+                <span>Username:</span>
+                <span>{{.User.Username}}</span>
+            </div>
+            <div class="profileinfoitem">
+                <span>Email:</span>
+                <span>{{.User.Email}}</span>
+            </div>
+            <div class="profileinfoitem">
+                <span>Created:</span>
+                <span>{{.User.DateCreated}}</span>
+            </div>
+        </div>
+        <div class="profilebuttons">
+            <a href="/user/edit">Edit</a>
+            <a href="/user/delete">Delete</a>
+        </div>
+    
+</div>
+<style>
+    .profilecontainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .sidebar {
+        width: 200px;
+        height: 100%;
+        background-color: #f1f1f1;
+        padding: 20px;
+        border-right: 1px solid #ccc;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .sidebar a {
+        display: block;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #333;
+    }
+    .sidebar a:hover {
+        color: aqua;
+        background-color: #333;
+    }
+    .profile {
+        width: 500px;
+        padding: 20px;
+    }
+    .profile h1 {
+        margin-bottom: 20px;
+    }
+    .profileinfo {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    .profileinfoitem {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .profilebuttons {
+        display: flex;
+        justify-content: space-between;
+    }
+    .profilebuttons a {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+    }
+    .profilebuttons a:hover {
+        background-color: #555;
+    }
+</style>
+{{end}}

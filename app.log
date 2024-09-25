@@ -1,1 +1,525 @@
 FATAL: 2024/09/24 01:40:28 database.go:85: Failed to connect to database: %v dial tcp 127.0.0.1:0: connect: connection refused
+FATAL: 2024/09/24 16:49:18 database.go:85: Failed to connect to database: %v dial tcp 127.0.0.1:0: connect: connection refused
+FATAL: 2024/09/24 16:49:32 database.go:85: Failed to connect to database: %v dial tcp 127.0.0.1:0: connect: connection refused
+FATAL: 2024/09/24 16:51:17 database.go:85: Failed to connect to database: %v dial tcp 127.0.0.1:0: connect: connection refused
+FATAL: 2024/09/24 16:54:34 database.go:85: Failed to connect to database: %v dial tcp 127.0.0.1:0: connect: connection refused
+FATAL: 2024/09/24 16:56:52 database.go:85: Failed to connect to database: %v dial tcp 127.0.0.1:0: connect: connection refused
+FATAL: 2024/09/24 16:58:22 database.go:85: Failed to connect to database: %v dial tcp 127.0.0.1:0: connect: connection refused
+FATAL: 2024/09/24 17:01:04 database.go:85: Failed to connect to database: %v dial tcp 127.0.0.1:0: connect: connection refused
+ERROR: 2024/09/24 17:08:26 database.go:34: Key not found in cache
+ERROR: 2024/09/24 17:08:26 database.go:34: Key not found in cache
+ERROR: 2024/09/24 17:08:26 auth.go:191: Username too short
+ERROR: 2024/09/24 20:01:56 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:01:56 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:01:56 auth.go:195: Username too short
+ERROR: 2024/09/24 20:02:11 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:02:11 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:02:11 auth.go:195: Username too short
+ERROR: 2024/09/24 20:02:28 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:02:28 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:02:28 auth.go:195: Username too short
+ERROR: 2024/09/24 20:04:32 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:04:32 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:04:32 auth.go:195: Username too short
+ERROR: 2024/09/24 20:04:40 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:04:40 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:04:40 auth.go:195: Username too short
+ERROR: 2024/09/24 20:06:33 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:06:33 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:06:33 auth.go:195: Username too short
+ERROR: 2024/09/24 20:06:37 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:06:37 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:06:37 auth.go:195: Username too short
+ERROR: 2024/09/24 20:07:45 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:07:45 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:07:45 auth.go:195: Username too short
+ERROR: 2024/09/24 20:10:48 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:10:48 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:10:48 auth.go:200: Username too short
+ERROR: 2024/09/24 20:10:48 routes.go:32: Registration failed:  code=400, message=Username must be at least 4 characters long
+ERROR: 2024/09/24 20:10:54 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:10:54 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:10:54 auth.go:200: Username too short
+ERROR: 2024/09/24 20:10:54 routes.go:32: Registration failed:  code=400, message=Username must be at least 4 characters long
+ERROR: 2024/09/24 20:11:11 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:11:11 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:11:11 auth.go:200: Username too short
+ERROR: 2024/09/24 20:11:11 routes.go:32: Registration failed:  code=400, message=Username must be at least 4 characters long
+ERROR: 2024/09/24 20:12:26 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:12:26 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:12:26 auth.go:200: Username too short
+ERROR: 2024/09/24 20:12:26 routes.go:32: Registration failed:  code=400, message=Username must be at least 4 characters long
+ERROR: 2024/09/24 20:12:41 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:12:41 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:12:41 auth.go:200: Username too short
+ERROR: 2024/09/24 20:12:41 routes.go:32: Registration failed:  code=400, message=Username must be at least 4 characters long
+ERROR: 2024/09/24 20:13:23 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:13:23 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:13:23 auth.go:200: Username too short
+ERROR: 2024/09/24 20:13:23 routes.go:32: Registration failed:  code=400, message=Username must be at least 4 characters long
+ERROR: 2024/09/24 20:14:57 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:14:57 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:14:57 auth.go:202: Username too short
+ERROR: 2024/09/24 20:17:53 database.go:34: Key not found in cache
+ERROR: 2024/09/24 20:17:53 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:17:53 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 20:17:53 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 20:17:53 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:27:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:27:18 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:27:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:27:18 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:27:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:27:18 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:27:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:27:18 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 20:27:18 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 20:27:18 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:28:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:28:00 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:28:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:28:00 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:28:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:28:00 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:28:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:28:00 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 20:28:00 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 20:28:00 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:28:23 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:28:23 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:28:23 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:28:23 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:28:23 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:28:23 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:28:23 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:28:23 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 20:28:23 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 20:28:23 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:30:22 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:30:22 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:30:22 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:30:22 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:30:22 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:30:23 database.go:61: Cache invalidated
+ERROR: 2024/09/24 20:30:23 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 20:30:24 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 20:30:24 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 20:30:24 database.go:61: Cache invalidated
+ERROR: 2024/09/24 21:25:14 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 21:25:14 database.go:55: Cache stored
+ERROR: 2024/09/24 21:25:14 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 21:25:14 database.go:55: Cache stored
+ERROR: 2024/09/24 21:25:14 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 21:25:14 database.go:55: Cache stored
+ERROR: 2024/09/24 21:25:14 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 21:25:14 database.go:55: Cache stored
+ERROR: 2024/09/24 21:36:49 database.go:34: Key not found in cache
+ERROR: 2024/09/24 21:36:49 auth.go:82: Error checking for admin user:  invalid field found for struct blogr.moe/auth.User's field Group: define a valid foreign key for relations or implement the Valuer/Scanner interface
+ERROR: 2024/09/24 21:39:29 database.go:34: Key not found in cache
+ERROR: 2024/09/24 21:39:29 auth.go:82: Error checking for admin user:  invalid field found for struct blogr.moe/auth.User's field Group: define a valid foreign key for relations or implement the Valuer/Scanner interface
+ERROR: 2024/09/24 21:40:09 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 21:40:09 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 21:40:09 database.go:61: Cache invalidated
+ERROR: 2024/09/24 21:40:34 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 21:40:35 database.go:61: Cache invalidated
+DEBUG: 2024/09/24 21:40:35 database.go:61: Cache invalidated
+ERROR: 2024/09/24 21:44:42 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 21:44:42 database.go:55: Cache stored
+ERROR: 2024/09/24 21:50:13 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 21:50:13 database.go:55: Cache stored
+ERROR: 2024/09/24 21:50:13 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 21:50:13 database.go:55: Cache stored
+DEBUG: 2024/09/24 21:51:14 database.go:42: Cache hit
+DEBUG: 2024/09/24 21:51:14 database.go:42: Cache hit
+DEBUG: 2024/09/24 21:51:54 database.go:42: Cache hit
+DEBUG: 2024/09/24 21:51:54 database.go:42: Cache hit
+ERROR: 2024/09/24 22:06:21 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:06:21 database.go:55: Cache stored
+ERROR: 2024/09/24 22:07:03 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:07:03 database.go:55: Cache stored
+ERROR: 2024/09/24 22:07:25 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:07:25 database.go:55: Cache stored
+ERROR: 2024/09/24 22:08:12 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:08:12 database.go:55: Cache stored
+ERROR: 2024/09/24 22:09:12 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:09:12 database.go:55: Cache stored
+ERROR: 2024/09/24 22:09:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:09:18 database.go:55: Cache stored
+ERROR: 2024/09/24 22:09:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:09:18 database.go:55: Cache stored
+ERROR: 2024/09/24 22:09:37 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:09:37 database.go:55: Cache stored
+ERROR: 2024/09/24 22:11:33 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:11:33 database.go:55: Cache stored
+ERROR: 2024/09/24 22:12:02 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:12:02 database.go:55: Cache stored
+ERROR: 2024/09/24 22:12:58 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:12:58 database.go:55: Cache stored
+ERROR: 2024/09/24 22:12:58 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:12:58 database.go:55: Cache stored
+ERROR: 2024/09/24 22:13:40 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:13:40 database.go:55: Cache stored
+ERROR: 2024/09/24 22:13:44 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:13:44 database.go:55: Cache stored
+ERROR: 2024/09/24 22:13:44 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:13:44 database.go:55: Cache stored
+ERROR: 2024/09/24 22:14:38 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:14:38 database.go:55: Cache stored
+ERROR: 2024/09/24 22:14:42 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:14:42 database.go:55: Cache stored
+ERROR: 2024/09/24 22:14:42 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:14:42 database.go:55: Cache stored
+DEBUG: 2024/09/24 22:15:17 database.go:42: Cache hit
+DEBUG: 2024/09/24 22:15:17 database.go:42: Cache hit
+ERROR: 2024/09/24 22:17:33 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:17:33 database.go:55: Cache stored
+ERROR: 2024/09/24 22:18:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:18:00 database.go:55: Cache stored
+ERROR: 2024/09/24 22:20:49 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:20:49 database.go:55: Cache stored
+ERROR: 2024/09/24 22:21:18 auth.go:220: Empty username or password
+ERROR: 2024/09/24 22:22:05 auth.go:220: Empty username or password
+ERROR: 2024/09/24 22:22:09 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:22:09 database.go:55: Cache stored
+ERROR: 2024/09/24 22:22:14 auth.go:220: Empty username or password
+ERROR: 2024/09/24 22:26:49 auth.go:220: Empty username or password
+ERROR: 2024/09/24 22:27:00 auth.go:220: Empty username or password
+ERROR: 2024/09/24 22:27:06 auth.go:220: Empty username or password
+ERROR: 2024/09/24 22:30:58 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:30:58 database.go:55: Cache stored
+ERROR: 2024/09/24 22:31:09 auth.go:220: Empty username or password
+ERROR: 2024/09/24 22:31:13 auth.go:220: Empty username or password
+ERROR: 2024/09/24 22:34:51 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:34:51 database.go:55: Cache stored
+DEBUG: 2024/09/24 22:34:54 database.go:42: Cache hit
+ERROR: 2024/09/24 22:34:54 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:34:54 database.go:55: Cache stored
+ERROR: 2024/09/24 22:36:28 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:36:28 database.go:55: Cache stored
+DEBUG: 2024/09/24 22:36:33 database.go:42: Cache hit
+ERROR: 2024/09/24 22:36:33 database.go:34: Key not found in cache
+DEBUG: 2024/09/24 22:36:33 database.go:55: Cache stored
+DEBUG: 2024/09/24 22:37:32 database.go:42: Cache hit
+DEBUG: 2024/09/24 22:37:32 database.go:42: Cache hit
+ERROR: 2024/09/25 00:50:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:50:18 database.go:55: Cache stored
+DEBUG: 2024/09/25 00:50:38 database.go:42: Cache hit
+ERROR: 2024/09/25 00:50:38 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:50:38 database.go:55: Cache stored
+DEBUG: 2024/09/25 00:50:50 database.go:42: Cache hit
+DEBUG: 2024/09/25 00:50:50 database.go:42: Cache hit
+ERROR: 2024/09/25 00:51:21 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:51:21 database.go:55: Cache stored
+ERROR: 2024/09/25 00:51:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:51:59 database.go:55: Cache stored
+ERROR: 2024/09/25 00:53:28 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:53:28 database.go:55: Cache stored
+ERROR: 2024/09/25 00:53:46 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:53:46 database.go:55: Cache stored
+DEBUG: 2024/09/25 00:53:59 database.go:42: Cache hit
+ERROR: 2024/09/25 00:53:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:53:59 database.go:55: Cache stored
+ERROR: 2024/09/25 00:55:26 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:55:26 database.go:55: Cache stored
+DEBUG: 2024/09/25 00:56:04 database.go:42: Cache hit
+ERROR: 2024/09/25 00:56:04 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:56:04 database.go:55: Cache stored
+ERROR: 2024/09/25 00:56:50 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:56:50 database.go:55: Cache stored
+DEBUG: 2024/09/25 00:56:58 database.go:42: Cache hit
+ERROR: 2024/09/25 00:56:58 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:56:58 database.go:55: Cache stored
+ERROR: 2024/09/25 00:57:25 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:57:25 database.go:55: Cache stored
+DEBUG: 2024/09/25 00:57:44 database.go:42: Cache hit
+ERROR: 2024/09/25 00:57:44 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 00:57:44 database.go:55: Cache stored
+DEBUG: 2024/09/25 00:58:10 database.go:42: Cache hit
+DEBUG: 2024/09/25 00:58:10 database.go:42: Cache hit
+ERROR: 2024/09/25 01:03:55 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:03:55 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:04:01 database.go:42: Cache hit
+ERROR: 2024/09/25 01:04:01 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:04:01 database.go:55: Cache stored
+ERROR: 2024/09/25 01:05:29 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:05:29 database.go:55: Cache stored
+ERROR: 2024/09/25 01:06:04 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:06:04 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:06:13 database.go:42: Cache hit
+ERROR: 2024/09/25 01:06:13 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:06:13 database.go:55: Cache stored
+ERROR: 2024/09/25 01:07:42 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:07:42 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:07:52 database.go:42: Cache hit
+ERROR: 2024/09/25 01:07:52 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:07:52 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:07:52 auth.go:245: Logged in admin with UUID 4c1258b4-b3fa-45d8-9a23-0e508c6654ad
+ERROR: 2024/09/25 01:09:47 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:09:47 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:10:02 database.go:42: Cache hit
+ERROR: 2024/09/25 01:10:02 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:10:02 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:10:02 auth.go:245: Logged in admin with UUID 4c1258b4-b3fa-45d8-9a23-0e508c6654ad
+DEBUG: 2024/09/25 01:10:20 database.go:42: Cache hit
+DEBUG: 2024/09/25 01:10:20 database.go:42: Cache hit
+DEBUG: 2024/09/25 01:10:20 auth.go:245: Logged in admin with UUID 4c1258b4-b3fa-45d8-9a23-0e508c6654ad
+ERROR: 2024/09/25 01:10:43 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:10:43 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:10:48 database.go:42: Cache hit
+ERROR: 2024/09/25 01:10:48 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:10:48 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:10:48 auth.go:245: Logged in admin with UUID 4c1258b4-b3fa-45d8-9a23-0e508c6654ad
+DEBUG: 2024/09/25 01:11:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 01:11:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 01:11:53 auth.go:245: Logged in admin with UUID 4c1258b4-b3fa-45d8-9a23-0e508c6654ad
+ERROR: 2024/09/25 01:14:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:14:18 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:14:28 database.go:42: Cache hit
+ERROR: 2024/09/25 01:14:28 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:14:28 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:14:28 auth.go:245: Logged in admin with UUID 4c1258b4-b3fa-45d8-9a23-0e508c6654ad
+ERROR: 2024/09/25 01:14:44 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:14:44 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:14:51 database.go:42: Cache hit
+ERROR: 2024/09/25 01:14:51 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:14:51 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:14:51 auth.go:245: Logged in admin with UUID 4c1258b4-b3fa-45d8-9a23-0e508c6654ad
+ERROR: 2024/09/25 01:16:11 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:16:11 database.go:55: Cache stored
+ERROR: 2024/09/25 01:16:37 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:16:37 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:16:50 database.go:42: Cache hit
+ERROR: 2024/09/25 01:16:50 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:16:50 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:16:50 auth.go:245: Logged in admin with UUID 4c1258b4-b3fa-45d8-9a23-0e508c6654ad
+ERROR: 2024/09/25 01:18:33 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:18:33 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:18:37 database.go:42: Cache hit
+ERROR: 2024/09/25 01:21:41 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:21:41 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:22:21 database.go:42: Cache hit
+ERROR: 2024/09/25 01:22:21 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:22:21 database.go:55: Cache stored
+ERROR: 2024/09/25 01:22:52 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:22:52 database.go:55: Cache stored
+ERROR: 2024/09/25 01:23:17 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:23:17 database.go:55: Cache stored
+ERROR: 2024/09/25 01:26:40 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:26:40 database.go:55: Cache stored
+ERROR: 2024/09/25 01:26:49 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:26:49 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:26:57 database.go:42: Cache hit
+ERROR: 2024/09/25 01:26:57 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:26:57 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:28:40 database.go:42: Cache hit
+DEBUG: 2024/09/25 01:28:40 database.go:42: Cache hit
+DEBUG: 2024/09/25 01:29:20 database.go:42: Cache hit
+DEBUG: 2024/09/25 01:29:20 database.go:42: Cache hit
+ERROR: 2024/09/25 01:29:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:29:59 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:30:04 database.go:42: Cache hit
+ERROR: 2024/09/25 01:30:04 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:30:04 database.go:55: Cache stored
+ERROR: 2024/09/25 01:31:07 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:31:07 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:31:16 database.go:42: Cache hit
+ERROR: 2024/09/25 01:31:16 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:31:16 database.go:55: Cache stored
+ERROR: 2024/09/25 01:35:58 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:35:58 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:36:03 database.go:42: Cache hit
+ERROR: 2024/09/25 01:36:03 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:36:03 database.go:55: Cache stored
+ERROR: 2024/09/25 01:38:08 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:38:08 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:38:12 database.go:42: Cache hit
+ERROR: 2024/09/25 01:38:12 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:38:12 database.go:55: Cache stored
+ERROR: 2024/09/25 01:39:28 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:39:28 database.go:55: Cache stored
+ERROR: 2024/09/25 01:39:34 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:39:34 database.go:55: Cache stored
+DEBUG: 2024/09/25 01:39:37 database.go:42: Cache hit
+ERROR: 2024/09/25 01:39:37 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 01:39:37 database.go:55: Cache stored
+ERROR: 2024/09/25 04:00:26 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:00:26 database.go:55: Cache stored
+ERROR: 2024/09/25 04:00:37 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:00:37 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:01:36 database.go:42: Cache hit
+ERROR: 2024/09/25 04:01:36 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:01:36 database.go:55: Cache stored
+ERROR: 2024/09/25 04:01:55 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:01:55 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:02:02 database.go:42: Cache hit
+ERROR: 2024/09/25 04:02:02 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:02:02 database.go:55: Cache stored
+ERROR: 2024/09/25 04:02:58 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:02:58 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:03:00 database.go:42: Cache hit
+ERROR: 2024/09/25 04:03:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:03:00 database.go:55: Cache stored
+ERROR: 2024/09/25 04:03:51 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:03:51 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:03:54 database.go:42: Cache hit
+ERROR: 2024/09/25 04:03:54 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:03:54 database.go:55: Cache stored
+ERROR: 2024/09/25 04:04:13 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:04:13 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:04:14 database.go:42: Cache hit
+ERROR: 2024/09/25 04:04:14 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:04:14 database.go:55: Cache stored
+ERROR: 2024/09/25 04:06:02 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:06:02 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:06:37 database.go:42: Cache hit
+ERROR: 2024/09/25 04:06:37 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:06:37 database.go:55: Cache stored
+ERROR: 2024/09/25 04:08:35 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:08:35 database.go:55: Cache stored
+ERROR: 2024/09/25 04:08:57 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:08:57 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:09:09 database.go:42: Cache hit
+ERROR: 2024/09/25 04:09:09 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:09:09 database.go:55: Cache stored
+ERROR: 2024/09/25 04:10:44 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:10:44 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:11:03 database.go:42: Cache hit
+ERROR: 2024/09/25 04:11:03 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:11:03 database.go:55: Cache stored
+ERROR: 2024/09/25 04:14:09 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:14:09 database.go:55: Cache stored
+ERROR: 2024/09/25 04:15:51 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:15:51 database.go:55: Cache stored
+ERROR: 2024/09/25 04:15:51 auth.go:291: Failed to decode password:  illegal base64 data at input byte 44
+ERROR: 2024/09/25 04:16:28 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:16:28 database.go:61: Cache invalidated
+DEBUG: 2024/09/25 04:16:28 database.go:61: Cache invalidated
+ERROR: 2024/09/25 04:17:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:17:00 database.go:55: Cache stored
+ERROR: 2024/09/25 04:17:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:17:00 database.go:55: Cache stored
+ERROR: 2024/09/25 04:18:04 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:18:04 database.go:55: Cache stored
+ERROR: 2024/09/25 04:18:15 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:18:15 database.go:55: Cache stored
+ERROR: 2024/09/25 04:18:15 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:18:15 database.go:55: Cache stored
+ERROR: 2024/09/25 04:18:15 auth.go:228: Failed to save session:  securecookie: error - caused by: securecookie: error - caused by: gob: type not registered for interface: auth.User
+ERROR: 2024/09/25 04:19:34 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:19:34 database.go:55: Cache stored
+ERROR: 2024/09/25 04:19:44 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:19:44 database.go:55: Cache stored
+ERROR: 2024/09/25 04:19:44 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:19:44 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:19:46 database.go:42: Cache hit
+DEBUG: 2024/09/25 04:20:15 database.go:42: Cache hit
+DEBUG: 2024/09/25 04:20:32 database.go:42: Cache hit
+DEBUG: 2024/09/25 04:21:03 database.go:42: Cache hit
+ERROR: 2024/09/25 04:23:39 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:23:39 database.go:55: Cache stored
+ERROR: 2024/09/25 04:23:41 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:23:41 database.go:55: Cache stored
+ERROR: 2024/09/25 04:23:41 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:23:41 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:23:41 database.go:42: Cache hit
+DEBUG: 2024/09/25 04:24:05 database.go:42: Cache hit
+ERROR: 2024/09/25 04:32:16 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:32:16 database.go:55: Cache stored
+ERROR: 2024/09/25 04:34:20 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:34:20 database.go:55: Cache stored
+ERROR: 2024/09/25 04:34:20 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:34:20 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:34:20 database.go:42: Cache hit
+DEBUG: 2024/09/25 04:34:36 database.go:61: Cache invalidated
+DEBUG: 2024/09/25 04:34:36 database.go:61: Cache invalidated
+ERROR: 2024/09/25 04:34:50 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:34:50 database.go:55: Cache stored
+ERROR: 2024/09/25 04:34:50 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:34:50 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:34:50 database.go:42: Cache hit
+ERROR: 2024/09/25 04:46:04 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:46:04 database.go:55: Cache stored
+ERROR: 2024/09/25 04:46:06 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 04:46:06 database.go:55: Cache stored
+DEBUG: 2024/09/25 04:46:23 database.go:42: Cache hit
+DEBUG: 2024/09/25 04:51:32 database.go:42: Cache hit
+DEBUG: 2024/09/25 04:54:28 database.go:42: Cache hit
+DEBUG: 2024/09/25 04:57:39 database.go:42: Cache hit
+DEBUG: 2024/09/25 04:57:41 database.go:42: Cache hit
+ERROR: 2024/09/25 09:20:17 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 09:20:17 database.go:55: Cache stored
+ERROR: 2024/09/25 09:20:31 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 09:20:31 database.go:55: Cache stored
+ERROR: 2024/09/25 09:24:28 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 09:24:28 database.go:55: Cache stored
+ERROR: 2024/09/25 09:26:01 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 09:26:01 database.go:55: Cache stored
+ERROR: 2024/09/25 09:26:02 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 09:26:02 database.go:55: Cache stored
+ERROR: 2024/09/25 09:26:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 09:26:18 database.go:55: Cache stored
+ERROR: 2024/09/25 09:26:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 09:26:18 database.go:55: Cache stored
+DEBUG: 2024/09/25 09:26:18 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:26:18 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:26:22 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:26:22 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:26:52 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:26:52 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:26:56 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:26:56 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:27:03 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:27:03 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:27:12 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:27:12 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:27:17 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:27:17 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:27:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:27:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:27:59 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:27:59 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:28:39 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:28:39 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:28:51 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:28:51 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:29:31 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:29:31 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:29:40 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:29:40 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:29:49 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:29:49 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:29:54 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:29:54 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:30:09 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:30:09 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:31:00 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:31:00 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:31:09 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:31:09 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:31:13 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:31:13 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:31:27 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:31:27 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:31:34 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:31:34 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:34:35 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:34:35 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:34:44 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:34:44 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:35:38 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:35:38 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:36:19 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:36:19 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:36:39 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:36:39 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:36:55 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:36:55 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:37:23 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:37:23 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:37:47 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:37:47 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:37:56 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:37:56 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:38:03 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:38:03 database.go:42: Cache hit
+DEBUG: 2024/09/25 09:38:20 database.go:42: Cache hit

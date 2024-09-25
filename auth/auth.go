@@ -1,23 +1,37 @@
 package auth
 
 import (
-	"crypto/hmac"
-	"crypto/sha256"
+	"crypto/rand"
+	"database/sql/driver"
 	"encoding/base64"
-	"log"
+	"encoding/json"
+	"errors"
+	"fmt"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
-	"blogr.moe/blog"
 	"blogr.moe/database"
 	"blogr.moe/logs"
+	"blogr.moe/utils/mail"
+	"blogr.moe/utils/queue"
 	"github.com/google/uuid"
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
+	"golang.org/x/crypto/scrypt"
+	"gorm.io/gorm"
 )
 
-var db = database.DB
+var (
+	db         = database.DB
+	ExpiryTime = 72 * time.Hour
+
+	saltSize = 32
+	keyLen   = 64
+)
+var manager = queue.NewQueueManager()
+var q = manager.GetQueue("auth", 1000)
 
 type User struct {
 	ID            uint   `json:"id" gorm:"primary_key"`
@@ -30,16 +44,17 @@ type User struct {
 	DateCreated   string `json:"date_created"`
 	Reputation    int    `json:"reputation"`
 	TotalViews    int    `json:"total_views"`
-	Group         groups
-	Blog          []blog.Blog
+	GroupID       uint   `json:"group_id"`
+	Group         Group  `json:"group" gorm:"foreignKey:GroupID"`
 	Premium       bool   `json:"premium"`
+	VerifiedEmail bool   `json:"verified_email"`
 	TransactionID string `json:"transaction_id"`
-	SubDomain     string `json:"sub_domain"`
 }
 
-type groups struct {
-	ID   uint   `json:"id" gorm:"primary_key"`
-	Name string `json:"name"`
+type Group struct {
+	Admin     bool `json:"admin"`
+	Moderator bool `json:"moderator"`
+	User      bool `json:"user"`
 }
 
 type UserLogin struct {
@@ -49,211 +64,355 @@ type UserLogin struct {
 	Password string `json:"password"`
 }
 
-func (u *User) GetUser(username string) error {
-	if err := db.Where("username = ?", username).First(&u).Error; err != nil {
-		return err
-	}
-	return nil
+type Register struct {
+	Email    string `json:"email"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
-func GetUserByUsername(username string) User {
+type Login struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+func init() {
+	db.AutoMigrate(&User{}, &UserLogin{})
+	ensureAdminUser()
+}
+
+func ensureAdminUser() {
 	var user User
-	db.Where("username = ?", username).First(&user)
-	user = User{
-		ID:          user.ID,
-		Name:        user.Name,
-		Email:       user.Email,
-		Username:    user.Username,
-		Avatar:      user.Avatar,
-		LastLogin:   user.LastLogin,
-		DateCreated: user.DateCreated,
-		Reputation:  user.Reputation,
-		TotalViews:  user.TotalViews,
-		Group:       user.Group,
-		Blog:        user.Blog,
-		Premium:     user.Premium,
+	if err := db.Where("username = ?", "admin").First(&user).Error; err != nil {
+		if !errors.Is(err, gorm.ErrRecordNotFound) {
+			logs.Error("Error checking for admin user: ", err)
+			return
+		}
+		createAdminUser()
 	}
-	return user
 }
 
-func GetUser(uuid string) User {
-	var user User
-	db.Where("uuid = ?", uuid).First(&user)
-	user = User{
-		ID:          user.ID,
-		UUID:        user.UUID,
-		Name:        user.Name,
-		Email:       user.Email,
-		Username:    user.Username,
-		Avatar:      user.Avatar,
-		LastLogin:   user.LastLogin,
-		DateCreated: user.DateCreated,
-		Reputation:  user.Reputation,
-		TotalViews:  user.TotalViews,
-		Group:       user.Group,
-		Blog:        user.Blog,
-		Premium:     user.Premium,
-	}
-	return user
-}
-func checkPassword(password string, user UserLogin) bool {
-	db.Where("username = ?", user.Username).First(&user)
-	decrypted := DecodePassword(user.Password)
-	return password == decrypted
-}
-
-func encryptPassword(password string) string {
-	enc := os.Getenv("ENCRYPT_KEY")
-	h := hmac.New(sha256.New, []byte(enc))
-	h.Write([]byte(password))
-	encpass := h.Sum(nil)
-	encodedPass := base64.StdEncoding.EncodeToString(encpass)
-	logs.Debug("Encoded Pass for new user")
-	return encodedPass
-}
-
-func DecodePassword(encrypted_password string) string {
-	enc := os.Getenv("ENCRYPT_KEY")
-	decoded, err := base64.StdEncoding.DecodeString(encrypted_password)
-
+func createAdminUser() {
+	encpass, err := encryptPassword("admin")
 	if err != nil {
-		log.Println(err)
-		return ""
+		logs.Error("Failed to encrypt password: ", err)
+		return
 	}
-	h := hmac.New(sha256.New, []byte(enc))
-	h.Write(decoded)
-	encpass := h.Sum(nil)
-	logs.Debug("Decoded Password for user")
-	return base64.StdEncoding.EncodeToString(encpass)
-}
-
-func getFullUser(uuid string) User {
-	var user User
-	db.Where("uuid = ?", uuid).First(&user)
-	user = User{
-		ID:          user.ID,
-		UUID:        user.UUID,
-		Name:        user.Name,
-		Email:       user.Email,
-		Username:    user.Username,
-		Avatar:      user.Avatar,
-		LastLogin:   user.LastLogin,
-		DateCreated: user.DateCreated,
-		Reputation:  user.Reputation,
-		TotalViews:  user.TotalViews,
-		Group:       user.Group,
-		Blog:        user.Blog,
-		Premium:     user.Premium,
-	}
-	return user
-}
-
-func (u *UserLogin) LoginHandler(username string, password string, c echo.Context, uf *User) bool {
-	if err := db.Where("username = ?", username).First(&u).Error; err != nil {
-		return false
-	}
-	if checkPassword(password, *u) {
-		sess, _ := session.Get("session", c)
-		sess.Values["user"] = getFullUser(uf.UUID)
-		sess.Save(c.Request(), c.Response())
-		return true
-	}
-	return false
-}
-
-func (u *User) CreateUser(c echo.Context) error {
-	name := c.FormValue("name")
-	email := c.FormValue("email")
-	username := c.FormValue("username")
-	password := c.FormValue("password")
 	uuid := genuuid()
-	encpass := encryptPassword(password)
-	user := User{
+	admin := User{
 		UUID:        uuid,
-		Name:        name,
-		Email:       email,
-		Username:    username,
-		DateCreated: time.Now().String(),
+		Email:       "admin@blogr.moe",
+		Username:    "admin",
+		DateCreated: time.Now().Format(time.RFC3339),
 		Reputation:  0,
 		TotalViews:  0,
-		Group: groups{
-			Name: "User",
-		},
-		Premium: false,
+		Group:       Group{Admin: true, Moderator: false, User: true},
+		Premium:     true,
 	}
-	userlogin := UserLogin{
+
+	if err := db.Create(&admin).Error; err != nil {
+		logs.Error("Failed to create admin user: ", err)
+		return
+	}
+
+	adminlogin := UserLogin{
 		UUID:     uuid,
-		Username: username,
+		Username: "admin",
 		Password: encpass,
 	}
-	db.Create(&user)
-	db.Create(&userlogin)
-	return c.JSON(http.StatusOK, user)
+
+	if err := db.Create(&adminlogin).Error; err != nil {
+		logs.Error("Failed to create admin login: ", err)
+	}
+}
+
+func (g *Group) Scan(value interface{}) error {
+	if value == nil {
+		*g = Group{}
+		return nil
+	}
+	bytes, ok := value.([]byte)
+	if !ok {
+		return fmt.Errorf("unsupported data type: %T", value)
+	}
+	return json.Unmarshal(bytes, g)
+}
+
+func (g Group) Value() (driver.Value, error) {
+	return json.Marshal(g)
+}
+
+// RegisterUser registers a new user
+func RegisterUser(c echo.Context) error {
+	var register Register
+	if err := c.Bind(&register); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
+	}
+
+	if register.Email == "" || register.Username == "" || register.Password == "" {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "missing fields"})
+	}
+
+	encpass, err := encryptPassword(register.Password)
+	if err != nil {
+		logs.Error("Failed to encrypt password: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+
+	uuid := genuuid()
+	user := User{
+		UUID:        uuid,
+		Email:       register.Email,
+		Username:    register.Username,
+		DateCreated: time.Now().Format(time.RFC3339),
+		Reputation:  0,
+		TotalViews:  0,
+		Group:       Group{Admin: false, Moderator: false, User: true},
+		Premium:     false,
+	}
+
+	if err := db.Create(&user).Error; err != nil {
+		logs.Error("Failed to create user: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+
+	userlogin := UserLogin{
+		UUID:     uuid,
+		Username: register.Username,
+		Password: encpass,
+	}
+
+	if err := db.Create(&userlogin).Error; err != nil {
+		logs.Error("Failed to create user login: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+	mail.AddMailToQueue(register.Email, "Welcome to Blogr!", "Thank you for registering with Blogr!")
+	q.Enqueue(func() {
+		VerifyEmail(register.Email)
+	})
+	return c.JSON(http.StatusOK, map[string]string{"success": "user created"})
+}
+
+func VerifyEmail(email string) {
+	user, err := GetUserByEmail(email)
+	if err != nil {
+		logs.Error("Failed to get user by email: ", err)
+		return
+	}
+	uuid := user.UUID
+	baseUrl := os.Getenv("BASE_URL")
+	mail.AddMailToQueue(email, "Verify your email", "Click the link to verify your email: "+baseUrl+"/verify/"+uuid)
+}
+
+func GetUserByEmail(email string) (*User, error) {
+	var user User
+	if err := db.Where("email = ?", email).First(&user).Error; err != nil {
+		return nil, err
+	}
+
+	return &user, nil
+}
+
+func VerifyHandler(c echo.Context) error {
+	uuid := c.Param("uuid")
+	var user User
+	if err := db.Where("uuid = ?", uuid).First(&user).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return c.JSON(http.StatusNotFound, map[string]string{"error": "user not found"})
+		}
+		logs.Error("Failed to query user: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+
+	user.VerifiedEmail = true
+	if err := db.Save(&user).Error; err != nil {
+		logs.Error("Failed to update user: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+
+	return c.JSON(http.StatusOK, map[string]string{"success": "email verified"})
+}
+
+// LoginHandler is a handler for the login route
+
+func LoginHandler(c echo.Context) error {
+	var login Login
+
+	if err := c.Bind(&login); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
+	}
+
+	if login.Username == "" || login.Password == "" {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "missing fields"})
+	}
+
+	var userlogin UserLogin
+	if err := db.Where("username = ?", login.Username).First(&userlogin).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return c.JSON(http.StatusUnauthorized, map[string]string{"error": "invalid credentials"})
+		}
+		logs.Error("Failed to query userlogin: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+
+	if !comparePasswords(userlogin.Password, login.Password) {
+		return c.JSON(http.StatusUnauthorized, map[string]string{"error": "invalid credentials"})
+	}
+
+	var user User
+	if err := db.Where("uuid = ?", userlogin.UUID).First(&user).Error; err != nil {
+		logs.Error("Failed to query user: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+
+	session, err := session.Get("session", c)
+	if err != nil {
+		logs.Error("Failed to get session: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+
+	session.Values["uuid"] = user.UUID
+	if err := session.Save(c.Request(), c.Response()); err != nil {
+		logs.Error("Failed to save session: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+
+	return c.JSON(http.StatusOK, map[string]string{"success": "login successful"})
+}
+
+// LogoutHandler is a handler for the logout route
+func LogoutHandler(c echo.Context) error {
+	session, err := session.Get("session", c)
+	if err != nil {
+		logs.Error("Failed to get session: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+
+	session.Options.MaxAge = -1
+	if err := session.Save(c.Request(), c.Response()); err != nil {
+		logs.Error("Failed to save session: ", err)
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
+
+	return c.JSON(http.StatusOK, map[string]string{"success": "logout successful"})
+}
+
+// GetCurrentUser returns the current user
+func GetCurrentUser(c echo.Context) (*User, error) {
+	session, err := session.Get("session", c)
+	if err != nil {
+		logs.Error("Failed to get session: ", err)
+		return nil, errors.New("internal server error")
+	}
+
+	uuid, ok := session.Values["uuid"].(string)
+	if !ok {
+		return nil, errors.New("unauthenticated")
+	}
+
+	var user User
+	if err := db.Where("uuid = ?", uuid).First(&user).Error; err != nil {
+		logs.Error("Failed to query user: ", err)
+		return nil, errors.New("internal server error")
+	}
+
+	return &user, nil
+}
+
+func encryptPassword(password string) (string, error) {
+	salt := make([]byte, saltSize)
+	if _, err := rand.Read(salt); err != nil {
+		return "", err
+	}
+
+	hash, err := scrypt.Key([]byte(password), salt, 1<<14, 8, 1, keyLen)
+	if err != nil {
+		return "", err
+	}
+
+	encpass := base64.StdEncoding.EncodeToString(append(salt, hash...))
+	return encpass, nil
+}
+
+func comparePasswords(encpass, password string) bool {
+	decoded, err := base64.StdEncoding.DecodeString(encpass)
+	if err != nil {
+		logs.Error("Failed to decode password: ", err)
+		return false
+	}
+
+	salt := decoded[:saltSize]
+	hash, err := scrypt.Key([]byte(password), salt, 1<<14, 8, 1, keyLen)
+	if err != nil {
+		logs.Error("Failed to hash password: ", err)
+		return false
+	}
+
+	return strings.Compare(string(hash), string(decoded[saltSize:])) == 0
 }
 
 func genuuid() string {
-	uuid := uuid.New()
+	uuid, err := uuid.NewRandom()
+	if err != nil {
+		logs.Error("Failed to generate UUID: ", err)
+		return ""
+	}
 	return uuid.String()
 }
 
-func AdminCheck(c echo.Context) bool {
-	sess, _ := session.Get("session", c)
-	user := sess.Values["user"].(User)
-	if user.Group.Name == "Admin" {
-		return true
+// AdminCheck checks if the current user is an admin
+func AdminCheck(c echo.Context) (bool, error) {
+	user, err := GetCurrentUser(c)
+	if err != nil {
+		return false, err
 	}
-	return false
-}
 
-func (u *User) UpdateUser(c echo.Context) error {
-	sess, _ := session.Get("session", c)
-	user := sess.Values["user"].(User)
-	name := c.FormValue("name")
-	email := c.FormValue("email")
-	avatar := c.FormValue("avatar")
-	u.Name = name
-	u.Email = email
-	u.Avatar = avatar
-	db.Model(&user).Updates(u)
-	return c.JSON(http.StatusOK, user)
-}
-
-func (u *User) DeleteUser(c echo.Context) error {
-	sess, _ := session.Get("session", c)
-	user := sess.Values["user"].(User)
-	db.Delete(&user)
-	return c.JSON(http.StatusOK, user)
-}
-
-func (u *User) Logout(c echo.Context) error {
-	sess, _ := session.Get("session", c)
-	sess.Options.MaxAge = -1
-	sess.Save(c.Request(), c.Response())
-	return c.JSON(http.StatusOK, "Logged Out")
-}
-
-func IsLoggedIn(c echo.Context) bool {
-	sess, _ := session.Get("session", c)
-	if sess.Values["user"] != nil {
-		return true
+	if !user.Group.Admin {
+		return false, nil
 	}
-	return false
+
+	return true, nil
 }
 
-func GetUserSession(c echo.Context) User {
-	sess, _ := session.Get("session", c)
-	user := sess.Values["user"].(User)
-	return user
+// ModeratorCheck checks if the current user is a moderator
+func ModeratorCheck(c echo.Context) (bool, error) {
+	user, err := GetCurrentUser(c)
+	if err != nil {
+		return false, err
+	}
+
+	if !user.Group.Moderator {
+		return false, nil
+	}
+
+	return true, nil
 }
 
-func GetUserSessionID(c echo.Context) string {
-	sess, _ := session.Get("session", c)
-	user := sess.Values["user"].(User)
-	return user.UUID
+// UserCheck checks if the current user is a user
+func UserCheck(c echo.Context) (bool, error) {
+	user, err := GetCurrentUser(c)
+	if err != nil {
+		return false, err
+	}
+
+	if !user.Group.User {
+		return false, nil
+	}
+
+	return true, nil
 }
 
-func GetUserSessionUserName(c echo.Context) string {
-	sess, _ := session.Get("session", c)
-	user := sess.Values["user"].(User)
-	return user.Username
+func GetUserByID(uuid string) (*User, error) {
+	var user User
+	if err := db.Where("uuid = ?", uuid).First(&user).Error; err != nil {
+		return nil, err
+	}
+	return &user, nil
+}
+
+func TotalUserCount() (int64, error) {
+	var count int64
+	if err := db.Model(&User{}).Count(&count).Error; err != nil {
+		return 0, err
+	}
+	return count, nil
 }

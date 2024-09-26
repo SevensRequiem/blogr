@@ -7,3 +7,7 @@
 *.mp3
 *.webm
 *.pem
+*.key
+*.gob
+*.zip
+*.tar

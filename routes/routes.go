@@ -32,40 +32,59 @@ func RegisterRoutes(e *echo.Echo) {
 
 	// Profile
 	e.GET("/user/profile", func(c echo.Context) error {
-		isUser, err := auth.UserCheck(c)
-		if err != nil || !isUser {
-			return c.Redirect(http.StatusSeeOther, "/")
+		isUser := auth.UserCheck(c)
+		if !isUser {
+			return c.Redirect(http.StatusFound, "/")
 		}
+
 		return home.Profile(c)
 	})
 	e.GET("/user/posts", func(c echo.Context) error {
-		isUser, err := auth.UserCheck(c)
-		if err != nil || !isUser {
-			return c.Redirect(http.StatusSeeOther, "/")
+		isUser := auth.UserCheck(c)
+		if !isUser {
+			return c.Redirect(http.StatusFound, "/")
 		}
 		return home.ProfilePosts(c)
 	})
 	e.GET("/user/comments", func(c echo.Context) error {
-		isUser, err := auth.UserCheck(c)
-		if err != nil || !isUser {
-			return c.Redirect(http.StatusSeeOther, "/")
+		isUser := auth.UserCheck(c)
+		if !isUser {
+			return c.Redirect(http.StatusFound, "/")
 		}
 		return home.ProfileComments(c)
 	})
 	e.GET("/user/settings", func(c echo.Context) error {
-		isUser, err := auth.UserCheck(c)
-		if err != nil || !isUser {
-			return c.Redirect(http.StatusSeeOther, "/")
+		isUser := auth.UserCheck(c)
+		if !isUser {
+			return c.Redirect(http.StatusFound, "/")
 		}
 		return home.ProfileSettings(c)
 	})
 
 	// Blog
-	e.GET("/blog/:id", home.Blog)
+	e.GET("/blog/:id", func(c echo.Context) error {
+		return blog.GetBlog(c)
+	})
 	e.GET("/:user/blog", home.UserBlog)
 	e.GET("/blog", home.BlogList)
+	e.GET("/uploads/blogs/:uuid/:file", func(c echo.Context) error {
+		return blog.GetBlogFile(c)
+	})
 
-	e.POST("/user/blog", func(c echo.Context) error {
+	// API
+	e.GET("/api/user/blog", func(c echo.Context) error {
+		isUser := auth.UserCheck(c)
+		if !isUser {
+			return c.JSON(http.StatusUnauthorized, "Unauthorized")
+		}
+		return blog.GetUserBlogPosts(c)
+	})
+
+	e.POST("/api/user/blog", func(c echo.Context) error {
+		isUser := auth.UserCheck(c)
+		if !isUser {
+			return c.JSON(http.StatusUnauthorized, "Unauthorized")
+		}
 		return blog.NewBlogHandler(c)
 	})
 

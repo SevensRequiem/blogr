@@ -48,6 +48,14 @@ type User struct {
 	Group         Group  `json:"group" gorm:"foreignKey:GroupID"`
 	Premium       bool   `json:"premium"`
 	VerifiedEmail bool   `json:"verified_email"`
+}
+
+type Transaction struct {
+	ID            uint   `json:"id" gorm:"primary_key"`
+	UUID          string `json:"uuid"`
+	Amount        int    `json:"amount"`
+	Sender        string `json:"sender"`
+	Date          string `json:"date"`
 	TransactionID string `json:"transaction_id"`
 }
 
@@ -78,6 +86,7 @@ type Login struct {
 func init() {
 	db.AutoMigrate(&User{}, &UserLogin{})
 	ensureAdminUser()
+	manager.ProcessQueuesWithPrefix("auth")
 }
 
 func ensureAdminUser() {
@@ -360,45 +369,44 @@ func genuuid() string {
 }
 
 // AdminCheck checks if the current user is an admin
-func AdminCheck(c echo.Context) (bool, error) {
+func AdminCheck(c echo.Context) bool {
 	user, err := GetCurrentUser(c)
 	if err != nil {
-		return false, err
+		return false
 	}
 
 	if !user.Group.Admin {
-		return false, nil
+		return false
 	}
 
-	return true, nil
+	return true
 }
 
 // ModeratorCheck checks if the current user is a moderator
-func ModeratorCheck(c echo.Context) (bool, error) {
+func ModeratorCheck(c echo.Context) bool {
 	user, err := GetCurrentUser(c)
 	if err != nil {
-		return false, err
+		return false
 	}
 
 	if !user.Group.Moderator {
-		return false, nil
+		return false
 	}
-
-	return true, nil
+	return true
 }
 
 // UserCheck checks if the current user is a user
-func UserCheck(c echo.Context) (bool, error) {
+func UserCheck(c echo.Context) bool {
 	user, err := GetCurrentUser(c)
 	if err != nil {
-		return false, err
+		return false
 	}
 
 	if !user.Group.User {
-		return false, nil
+		return false
 	}
 
-	return true, nil
+	return true
 }
 
 func GetUserByID(uuid string) (*User, error) {
@@ -415,4 +423,13 @@ func TotalUserCount() (int64, error) {
 		return 0, err
 	}
 	return count, nil
+}
+
+func GetUsername(uuid string) string {
+	user, err := GetUserByID(uuid)
+	if err != nil {
+		logs.Error("Failed to get user by ID: ", err)
+		return ""
+	}
+	return user.Username
 }

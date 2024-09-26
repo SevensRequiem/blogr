@@ -34,7 +34,7 @@ func Home(c echo.Context) error {
 }
 
 func Profile(c echo.Context) error {
-	tmpl, err := template.ParseFiles("views/base.html", "views/user/profile.html")
+	tmpl, err := template.ParseFiles("views/base.html", "views/user/base.html", "views/user/profile.html")
 	if err != nil {
 		return c.String(http.StatusInternalServerError, err.Error())
 	}
@@ -51,7 +51,7 @@ func Profile(c echo.Context) error {
 }
 
 func ProfilePosts(c echo.Context) error {
-	tmpl, err := template.ParseFiles("views/base.html", "views/user/posts.html")
+	tmpl, err := template.ParseFiles("views/base.html", "views/user/base.html", "views/user/posts.html")
 	if err != nil {
 		return c.String(http.StatusInternalServerError, err.Error())
 	}
@@ -68,7 +68,7 @@ func ProfilePosts(c echo.Context) error {
 }
 
 func ProfileComments(c echo.Context) error {
-	tmpl, err := template.ParseFiles("views/base.html", "views/user/comments.html")
+	tmpl, err := template.ParseFiles("views/base.html", "views/user/base.html", "views/user/comments.html")
 	if err != nil {
 		return c.String(http.StatusInternalServerError, err.Error())
 	}
@@ -85,11 +85,79 @@ func ProfileComments(c echo.Context) error {
 }
 
 func ProfileSettings(c echo.Context) error {
-	tmpl, err := template.ParseFiles("views/base.html", "views/user/settings.html")
+	tmpl, err := template.ParseFiles("views/base.html", "views/user/base.html", "views/user/settings.html")
 	if err != nil {
 		return c.String(http.StatusInternalServerError, err.Error())
 	}
 	data["PageName"] = "Settings"
+	GlobalData(c)
+
+	err = tmpl.ExecuteTemplate(c.Response().Writer, "base.html", data)
+	if err != nil {
+		fmt.Println("Error executing template:", err)
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+
+	return nil
+}
+
+func ProfileSecurity(c echo.Context) error {
+	tmpl, err := template.ParseFiles("views/base.html", "views/user/base.html", "views/user/security.html")
+	if err != nil {
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+	data["PageName"] = "Security"
+	GlobalData(c)
+
+	err = tmpl.ExecuteTemplate(c.Response().Writer, "base.html", data)
+	if err != nil {
+		fmt.Println("Error executing template:", err)
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+
+	return nil
+}
+
+func ProfileNotifications(c echo.Context) error {
+	tmpl, err := template.ParseFiles("views/base.html", "views/user/base.html", "views/user/notifications.html")
+	if err != nil {
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+	data["PageName"] = "Notifications"
+	GlobalData(c)
+
+	err = tmpl.ExecuteTemplate(c.Response().Writer, "base.html", data)
+	if err != nil {
+		fmt.Println("Error executing template:", err)
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+
+	return nil
+}
+
+func ProfilePrivacy(c echo.Context) error {
+	tmpl, err := template.ParseFiles("views/base.html", "views/user/base.html", "views/user/privacy.html")
+	if err != nil {
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+	data["PageName"] = "Privacy"
+	GlobalData(c)
+
+	err = tmpl.ExecuteTemplate(c.Response().Writer, "base.html", data)
+	if err != nil {
+		fmt.Println("Error executing template:", err)
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+
+	return nil
+}
+
+func ProfileDelete(c echo.Context) error {
+	tmpl, err := template.ParseFiles("views/base.html", "views/user/base.html", "views/user/delete.html")
+	if err != nil {
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+	data["PageName"] = "Delete Account"
 	GlobalData(c)
 
 	err = tmpl.ExecuteTemplate(c.Response().Writer, "base.html", data)

@@ -523,3 +523,701 @@ DEBUG: 2024/09/25 09:37:56 database.go:42: Cache hit
 DEBUG: 2024/09/25 09:38:03 database.go:42: Cache hit
 DEBUG: 2024/09/25 09:38:03 database.go:42: Cache hit
 DEBUG: 2024/09/25 09:38:20 database.go:42: Cache hit
+ERROR: 2024/09/25 17:27:41 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:27:41 database.go:55: Cache stored
+ERROR: 2024/09/25 17:27:46 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:27:46 database.go:55: Cache stored
+ERROR: 2024/09/25 17:27:53 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:27:53 database.go:55: Cache stored
+ERROR: 2024/09/25 17:27:53 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:27:53 database.go:55: Cache stored
+DEBUG: 2024/09/25 17:27:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:27:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:27:56 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:27:56 database.go:42: Cache hit
+ERROR: 2024/09/25 17:28:55 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:28:55 database.go:55: Cache stored
+ERROR: 2024/09/25 17:28:56 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:28:56 database.go:55: Cache stored
+DEBUG: 2024/09/25 17:28:56 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:28:59 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:28:59 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:30:52 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:30:52 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:31:10 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:31:10 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:31:13 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:31:13 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:31:35 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:31:35 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:32:42 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:32:42 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:33:02 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:33:02 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:33:20 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:33:20 database.go:42: Cache hit
+ERROR: 2024/09/25 17:36:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:36:59 database.go:55: Cache stored
+ERROR: 2024/09/25 17:37:01 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:37:01 database.go:55: Cache stored
+DEBUG: 2024/09/25 17:37:01 database.go:42: Cache hit
+ERROR: 2024/09/25 17:37:46 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:37:46 database.go:55: Cache stored
+ERROR: 2024/09/25 17:37:47 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:37:47 database.go:55: Cache stored
+DEBUG: 2024/09/25 17:37:47 database.go:42: Cache hit
+ERROR: 2024/09/25 17:38:24 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:38:24 database.go:55: Cache stored
+ERROR: 2024/09/25 17:38:25 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:38:25 database.go:55: Cache stored
+DEBUG: 2024/09/25 17:38:25 database.go:42: Cache hit
+ERROR: 2024/09/25 17:38:45 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:38:45 database.go:55: Cache stored
+ERROR: 2024/09/25 17:38:46 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:38:46 database.go:55: Cache stored
+DEBUG: 2024/09/25 17:38:46 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:39:10 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:39:10 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:40:12 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:40:12 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:40:39 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:40:39 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:40:44 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:40:44 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:40:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:40:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:40:57 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:40:57 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:41:17 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:41:17 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:41:30 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:41:30 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:41:42 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:41:42 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:41:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:41:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:41:57 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:41:57 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:42:07 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:42:07 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:42:16 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:42:16 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:42:39 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:42:39 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:43:35 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:43:35 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:44:23 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:44:23 database.go:42: Cache hit
+ERROR: 2024/09/25 17:44:41 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 17:44:41 database.go:55: Cache stored
+DEBUG: 2024/09/25 17:44:41 database.go:42: Cache hit
+DEBUG: 2024/09/25 17:47:43 database.go:42: Cache hit
+ERROR: 2024/09/25 21:15:10 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:15:10 database.go:55: Cache stored
+ERROR: 2024/09/25 21:15:21 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:15:21 database.go:55: Cache stored
+ERROR: 2024/09/25 21:15:27 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:15:27 database.go:55: Cache stored
+ERROR: 2024/09/25 21:15:27 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:15:27 database.go:55: Cache stored
+DEBUG: 2024/09/25 21:15:27 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:15:27 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:15:31 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:15:31 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:15:32 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:15:32 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:16:11 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:16:11 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:16:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:16:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:17:34 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:17:34 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:17:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:17:53 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:18:27 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:18:27 database.go:42: Cache hit
+ERROR: 2024/09/25 21:21:58 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:21:58 database.go:55: Cache stored
+ERROR: 2024/09/25 21:22:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:22:00 database.go:55: Cache stored
+DEBUG: 2024/09/25 21:22:00 database.go:42: Cache hit
+ERROR: 2024/09/25 21:22:18 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:22:18 database.go:55: Cache stored
+ERROR: 2024/09/25 21:22:20 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:22:20 database.go:55: Cache stored
+ERROR: 2024/09/25 21:22:57 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:22:57 database.go:55: Cache stored
+ERROR: 2024/09/25 21:23:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:23:00 database.go:55: Cache stored
+DEBUG: 2024/09/25 21:23:00 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:23:02 database.go:42: Cache hit
+ERROR: 2024/09/25 21:23:02 database.go:34: Key not found in cache
+ERROR: 2024/09/25 21:23:43 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:23:43 database.go:55: Cache stored
+ERROR: 2024/09/25 21:23:46 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:23:46 database.go:55: Cache stored
+DEBUG: 2024/09/25 21:23:46 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:23:46 database.go:42: Cache hit
+ERROR: 2024/09/25 21:24:53 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:24:53 database.go:55: Cache stored
+ERROR: 2024/09/25 21:25:43 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:25:43 database.go:55: Cache stored
+ERROR: 2024/09/25 21:25:43 database.go:34: Key not found in cache
+ERROR: 2024/09/25 21:25:56 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:25:56 database.go:55: Cache stored
+ERROR: 2024/09/25 21:25:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:25:59 database.go:55: Cache stored
+ERROR: 2024/09/25 21:25:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:26:03 database.go:42: Cache hit
+ERROR: 2024/09/25 21:26:03 database.go:34: Key not found in cache
+ERROR: 2024/09/25 21:27:39 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:27:39 database.go:55: Cache stored
+ERROR: 2024/09/25 21:27:40 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:27:40 database.go:55: Cache stored
+ERROR: 2024/09/25 21:27:40 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:27:40 database.go:42: Cache hit
+ERROR: 2024/09/25 21:28:36 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:28:36 database.go:55: Cache stored
+ERROR: 2024/09/25 21:28:36 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:28:36 database.go:55: Cache stored
+ERROR: 2024/09/25 21:28:36 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:28:36 database.go:42: Cache hit
+ERROR: 2024/09/25 21:28:53 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:28:53 database.go:55: Cache stored
+ERROR: 2024/09/25 21:28:54 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:28:54 database.go:55: Cache stored
+ERROR: 2024/09/25 21:28:54 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:28:54 database.go:42: Cache hit
+ERROR: 2024/09/25 21:30:20 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:30:20 database.go:55: Cache stored
+ERROR: 2024/09/25 21:30:20 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:30:20 database.go:55: Cache stored
+ERROR: 2024/09/25 21:30:20 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:30:20 blog.go:170: Failed to get user record not found
+DEBUG: 2024/09/25 21:30:20 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:30:42 database.go:42: Cache hit
+ERROR: 2024/09/25 21:30:42 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:30:42 blog.go:170: Failed to get user record not found
+DEBUG: 2024/09/25 21:30:42 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:31:00 database.go:42: Cache hit
+ERROR: 2024/09/25 21:31:00 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:31:00 blog.go:170: Failed to get user record not found
+DEBUG: 2024/09/25 21:31:00 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:31:20 database.go:42: Cache hit
+ERROR: 2024/09/25 21:31:20 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:31:20 blog.go:170: Failed to get user record not found
+DEBUG: 2024/09/25 21:31:20 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:31:38 database.go:42: Cache hit
+ERROR: 2024/09/25 21:31:38 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:31:38 blog.go:170: Failed to get user record not found
+DEBUG: 2024/09/25 21:31:38 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:31:54 database.go:42: Cache hit
+ERROR: 2024/09/25 21:31:54 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:31:54 blog.go:170: Failed to get user record not found
+DEBUG: 2024/09/25 21:31:54 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:32:13 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:34:20 database.go:42: Cache hit
+ERROR: 2024/09/25 21:34:20 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:34:20 blog.go:170: Failed to get user record not found
+DEBUG: 2024/09/25 21:34:20 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:34:27 database.go:42: Cache hit
+ERROR: 2024/09/25 21:34:27 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:34:27 blog.go:170: Failed to get user record not found
+DEBUG: 2024/09/25 21:34:27 database.go:42: Cache hit
+ERROR: 2024/09/25 21:34:56 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:34:56 database.go:55: Cache stored
+ERROR: 2024/09/25 21:34:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:34:59 database.go:55: Cache stored
+ERROR: 2024/09/25 21:34:59 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:34:59 blog.go:171: Failed to get user record not found
+DEBUG: 2024/09/25 21:34:59 database.go:42: Cache hit
+ERROR: 2024/09/25 21:34:59 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:34:59 blog.go:171: Failed to get user record not found
+ERROR: 2024/09/25 21:36:51 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:36:51 database.go:55: Cache stored
+ERROR: 2024/09/25 21:37:13 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:37:13 database.go:55: Cache stored
+ERROR: 2024/09/25 21:37:13 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:37:13 blog.go:177: Failed to get user record not found
+DEBUG: 2024/09/25 21:37:13 database.go:42: Cache hit
+ERROR: 2024/09/25 21:37:14 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:37:14 blog.go:177: Failed to get user record not found
+ERROR: 2024/09/25 21:39:46 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:39:46 database.go:55: Cache stored
+ERROR: 2024/09/25 21:39:51 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:39:51 database.go:55: Cache stored
+ERROR: 2024/09/25 21:39:51 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:39:51 blog.go:200: Failed to get user record not found
+DEBUG: 2024/09/25 21:39:51 database.go:42: Cache hit
+ERROR: 2024/09/25 21:39:51 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:39:51 blog.go:200: Failed to get user record not found
+ERROR: 2024/09/25 21:43:44 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:43:44 database.go:55: Cache stored
+ERROR: 2024/09/25 21:44:29 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:44:29 database.go:55: Cache stored
+ERROR: 2024/09/25 21:44:29 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:44:29 blog.go:200: Failed to get user record not found
+DEBUG: 2024/09/25 21:44:29 database.go:42: Cache hit
+ERROR: 2024/09/25 21:44:29 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:44:29 blog.go:200: Failed to get user record not found
+ERROR: 2024/09/25 21:45:34 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:45:34 database.go:55: Cache stored
+ERROR: 2024/09/25 21:46:23 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:46:23 database.go:55: Cache stored
+ERROR: 2024/09/25 21:46:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:46:59 database.go:55: Cache stored
+ERROR: 2024/09/25 21:47:01 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:47:01 database.go:55: Cache stored
+ERROR: 2024/09/25 21:51:25 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:51:25 database.go:55: Cache stored
+ERROR: 2024/09/25 21:51:33 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:51:33 database.go:55: Cache stored
+DEBUG: 2024/09/25 21:51:44 database.go:42: Cache hit
+ERROR: 2024/09/25 21:51:44 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:51:44 blog.go:196: Failed to get user record not found
+DEBUG: 2024/09/25 21:51:44 database.go:42: Cache hit
+ERROR: 2024/09/25 21:51:44 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:51:44 blog.go:196: Failed to get user record not found
+DEBUG: 2024/09/25 21:51:51 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:52:38 database.go:42: Cache hit
+ERROR: 2024/09/25 21:52:38 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:52:38 blog.go:196: Failed to get user record not found
+DEBUG: 2024/09/25 21:52:38 database.go:42: Cache hit
+ERROR: 2024/09/25 21:52:38 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:52:38 blog.go:196: Failed to get user record not found
+DEBUG: 2024/09/25 21:52:58 database.go:42: Cache hit
+ERROR: 2024/09/25 21:52:58 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:52:58 blog.go:196: Failed to get user record not found
+DEBUG: 2024/09/25 21:52:58 database.go:42: Cache hit
+ERROR: 2024/09/25 21:52:59 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:52:59 blog.go:196: Failed to get user record not found
+DEBUG: 2024/09/25 21:53:04 database.go:42: Cache hit
+ERROR: 2024/09/25 21:53:09 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:53:09 database.go:55: Cache stored
+ERROR: 2024/09/25 21:53:16 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:53:16 database.go:55: Cache stored
+DEBUG: 2024/09/25 21:53:16 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:53:16 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:53:16 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:53:18 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:53:18 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:53:19 database.go:42: Cache hit
+ERROR: 2024/09/25 21:53:19 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:53:19 blog.go:196: Failed to get user record not found
+DEBUG: 2024/09/25 21:53:19 database.go:42: Cache hit
+ERROR: 2024/09/25 21:53:19 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:53:19 blog.go:196: Failed to get user record not found
+DEBUG: 2024/09/25 21:53:28 database.go:42: Cache hit
+ERROR: 2024/09/25 21:55:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:55:59 database.go:55: Cache stored
+ERROR: 2024/09/25 21:56:01 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:56:01 database.go:55: Cache stored
+DEBUG: 2024/09/25 21:56:20 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:56:20 database.go:42: Cache hit
+ERROR: 2024/09/25 21:56:21 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:56:21 database.go:55: Cache stored
+DEBUG: 2024/09/25 21:56:22 database.go:42: Cache hit
+ERROR: 2024/09/25 21:57:14 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:57:14 database.go:55: Cache stored
+ERROR: 2024/09/25 21:57:20 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:57:20 database.go:55: Cache stored
+ERROR: 2024/09/25 21:57:20 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:57:20 database.go:55: Cache stored
+ERROR: 2024/09/25 21:57:20 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:57:20 database.go:55: Cache stored
+DEBUG: 2024/09/25 21:57:20 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:57:23 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:57:23 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:57:24 database.go:42: Cache hit
+ERROR: 2024/09/25 21:57:24 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:57:24 blog.go:193: Failed to get user record not found
+DEBUG: 2024/09/25 21:57:24 database.go:42: Cache hit
+ERROR: 2024/09/25 21:57:24 database.go:34: Key not found in cache
+INFO: 2024/09/25 21:57:24 blog.go:193: Failed to get user record not found
+DEBUG: 2024/09/25 21:57:32 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:57:34 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:57:35 database.go:42: Cache hit
+DEBUG: 2024/09/25 21:57:42 database.go:42: Cache hit
+ERROR: 2024/09/25 21:58:39 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:58:39 database.go:55: Cache stored
+ERROR: 2024/09/25 21:58:41 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:58:41 database.go:55: Cache stored
+ERROR: 2024/09/25 21:59:16 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:59:16 database.go:55: Cache stored
+ERROR: 2024/09/25 21:59:17 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:59:17 database.go:55: Cache stored
+ERROR: 2024/09/25 21:59:50 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:59:50 database.go:55: Cache stored
+ERROR: 2024/09/25 21:59:52 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 21:59:52 database.go:55: Cache stored
+ERROR: 2024/09/25 22:00:24 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:00:24 database.go:55: Cache stored
+ERROR: 2024/09/25 22:00:26 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:00:26 database.go:55: Cache stored
+ERROR: 2024/09/25 22:00:26 database.go:34: Key not found in cache
+ERROR: 2024/09/25 22:01:14 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:01:14 database.go:55: Cache stored
+ERROR: 2024/09/25 22:01:15 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:01:15 database.go:55: Cache stored
+ERROR: 2024/09/25 22:01:15 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:01:15 database.go:61: Cache invalidated
+ERROR: 2024/09/25 22:01:15 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:01:15 database.go:55: Cache stored
+ERROR: 2024/09/25 22:01:15 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:01:15 database.go:55: Cache stored
+ERROR: 2024/09/25 22:01:15 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:01:15 database.go:61: Cache invalidated
+ERROR: 2024/09/25 22:01:50 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:01:50 database.go:55: Cache stored
+ERROR: 2024/09/25 22:01:51 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:01:51 database.go:55: Cache stored
+ERROR: 2024/09/25 22:01:51 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:01:51 database.go:55: Cache stored
+DEBUG: 2024/09/25 22:01:51 database.go:42: Cache hit
+ERROR: 2024/09/25 22:02:21 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:02:21 database.go:55: Cache stored
+ERROR: 2024/09/25 22:02:23 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:02:23 database.go:55: Cache stored
+ERROR: 2024/09/25 22:02:23 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:02:23 database.go:55: Cache stored
+DEBUG: 2024/09/25 22:02:23 database.go:42: Cache hit
+DEBUG: 2024/09/25 22:02:23 database.go:61: Cache invalidated
+ERROR: 2024/09/25 22:02:23 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:02:23 database.go:61: Cache invalidated
+DEBUG: 2024/09/25 22:02:23 database.go:61: Cache invalidated
+DEBUG: 2024/09/25 22:02:23 database.go:61: Cache invalidated
+DEBUG: 2024/09/25 22:02:23 database.go:61: Cache invalidated
+DEBUG: 2024/09/25 22:02:23 database.go:61: Cache invalidated
+ERROR: 2024/09/25 22:02:36 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:02:36 database.go:55: Cache stored
+ERROR: 2024/09/25 22:02:36 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:02:36 database.go:55: Cache stored
+DEBUG: 2024/09/25 22:02:37 database.go:42: Cache hit
+DEBUG: 2024/09/25 22:02:37 database.go:42: Cache hit
+DEBUG: 2024/09/25 22:02:39 database.go:42: Cache hit
+ERROR: 2024/09/25 22:02:39 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:02:39 database.go:55: Cache stored
+DEBUG: 2024/09/25 22:02:39 database.go:42: Cache hit
+DEBUG: 2024/09/25 22:02:57 database.go:42: Cache hit
+DEBUG: 2024/09/25 22:02:57 database.go:42: Cache hit
+DEBUG: 2024/09/25 22:02:57 database.go:42: Cache hit
+ERROR: 2024/09/25 22:03:09 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:03:09 database.go:55: Cache stored
+ERROR: 2024/09/25 22:03:11 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:03:11 database.go:55: Cache stored
+DEBUG: 2024/09/25 22:03:11 database.go:42: Cache hit
+DEBUG: 2024/09/25 22:03:11 database.go:42: Cache hit
+ERROR: 2024/09/25 22:03:11 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:03:11 database.go:55: Cache stored
+DEBUG: 2024/09/25 22:03:21 database.go:42: Cache hit
+DEBUG: 2024/09/25 22:03:21 database.go:42: Cache hit
+DEBUG: 2024/09/25 22:03:21 database.go:42: Cache hit
+DEBUG: 2024/09/25 22:03:21 database.go:42: Cache hit
+ERROR: 2024/09/25 22:06:03 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 22:06:03 database.go:55: Cache stored
+DEBUG: 2024/09/25 22:06:03 database.go:42: Cache hit
+ERROR: 2024/09/25 23:36:40 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 23:36:40 database.go:55: Cache stored
+ERROR: 2024/09/25 23:38:03 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 23:38:03 database.go:55: Cache stored
+ERROR: 2024/09/25 23:38:25 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 23:38:25 database.go:55: Cache stored
+ERROR: 2024/09/25 23:38:33 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 23:38:33 database.go:55: Cache stored
+ERROR: 2024/09/25 23:38:33 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 23:38:33 database.go:55: Cache stored
+DEBUG: 2024/09/25 23:38:37 database.go:42: Cache hit
+DEBUG: 2024/09/25 23:38:37 database.go:42: Cache hit
+DEBUG: 2024/09/25 23:38:38 database.go:42: Cache hit
+DEBUG: 2024/09/25 23:38:38 database.go:42: Cache hit
+DEBUG: 2024/09/25 23:38:38 database.go:42: Cache hit
+ERROR: 2024/09/25 23:38:38 database.go:34: Key not found in cache
+INFO: 2024/09/25 23:38:38 blog.go:165: Failed to get user record not found
+DEBUG: 2024/09/25 23:38:47 database.go:42: Cache hit
+ERROR: 2024/09/25 23:38:47 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 23:38:47 database.go:61: Cache invalidated
+ERROR: 2024/09/25 23:38:47 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 23:38:47 database.go:55: Cache stored
+ERROR: 2024/09/25 23:38:47 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 23:38:47 database.go:55: Cache stored
+DEBUG: 2024/09/25 23:38:47 database.go:61: Cache invalidated
+DEBUG: 2024/09/25 23:38:47 database.go:61: Cache invalidated
+DEBUG: 2024/09/25 23:38:47 database.go:61: Cache invalidated
+DEBUG: 2024/09/25 23:38:47 database.go:61: Cache invalidated
+DEBUG: 2024/09/25 23:38:47 database.go:61: Cache invalidated
+ERROR: 2024/09/25 23:59:47 database.go:34: Key not found in cache
+DEBUG: 2024/09/25 23:59:47 database.go:55: Cache stored
+ERROR: 2024/09/26 00:00:02 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:00:02 database.go:55: Cache stored
+ERROR: 2024/09/26 00:00:03 blog.go:134: Failed to create image file open blogs/61b9a42a-3677-49df-a020-95952739e9f9/0/6cc3c829-5e88-470c-bcbd-600bb30cec53.png: no such file or directory
+ERROR: 2024/09/26 00:01:02 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:01:02 database.go:55: Cache stored
+ERROR: 2024/09/26 00:01:04 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:01:04 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:01:04 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:01:04 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:01:04 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:01:04 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:01:39 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:01:39 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:01:39 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:01:39 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:01:39 database.go:42: Cache hit
+ERROR: 2024/09/26 00:01:39 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:01:39 database.go:55: Cache stored
+ERROR: 2024/09/26 00:01:39 blog.go:319: Failed to open blog file open blogs/61b9a42a-3677-49df-a020-95952739e9f9/blogpost.gob: no such file or directory
+ERROR: 2024/09/26 00:02:58 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:02:58 database.go:55: Cache stored
+ERROR: 2024/09/26 00:03:02 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:03:02 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:03:02 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:03:02 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:03:02 database.go:42: Cache hit
+ERROR: 2024/09/26 00:03:02 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:03:02 database.go:55: Cache stored
+ERROR: 2024/09/26 00:08:30 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:08:30 database.go:55: Cache stored
+ERROR: 2024/09/26 00:08:32 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:08:32 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:08:32 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:08:32 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:08:32 database.go:42: Cache hit
+ERROR: 2024/09/26 00:08:32 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:08:32 database.go:55: Cache stored
+ERROR: 2024/09/26 00:09:04 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:09:04 database.go:55: Cache stored
+ERROR: 2024/09/26 00:09:14 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:09:14 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:09:14 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:09:14 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:09:14 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:09:14 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:10:11 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:10:11 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:10:11 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:10:11 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:10:11 database.go:42: Cache hit
+ERROR: 2024/09/26 00:10:11 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:10:11 database.go:55: Cache stored
+ERROR: 2024/09/26 00:10:11 blog.go:324: Failed to open blog file open blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864.gob: no such file or directory
+ERROR: 2024/09/26 00:10:28 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:10:28 database.go:55: Cache stored
+ERROR: 2024/09/26 00:10:29 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:10:29 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:10:29 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:10:30 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:10:30 database.go:42: Cache hit
+ERROR: 2024/09/26 00:10:30 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:10:30 database.go:55: Cache stored
+ERROR: 2024/09/26 00:10:30 blog.go:324: Failed to open blog file open blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864.gob: no such file or directory
+ERROR: 2024/09/26 00:11:44 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:11:44 database.go:55: Cache stored
+ERROR: 2024/09/26 00:11:54 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:11:54 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:11:54 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:11:54 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:11:54 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:11:54 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:12:26 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:12:26 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:12:26 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:12:26 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:12:26 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:12:26 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:12:45 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:12:45 database.go:55: Cache stored
+ERROR: 2024/09/26 00:12:54 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:12:54 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:12:54 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:12:54 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:12:54 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:12:54 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:13:03 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:13:03 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:13:03 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:13:04 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:13:04 database.go:42: Cache hit
+ERROR: 2024/09/26 00:13:04 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:13:04 database.go:55: Cache stored
+ERROR: 2024/09/26 00:13:04 blog.go:324: Failed to open blog file open blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864.gob: no such file or directory
+ERROR: 2024/09/26 00:14:28 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:14:28 database.go:55: Cache stored
+ERROR: 2024/09/26 00:14:29 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:14:29 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:14:29 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:14:30 database.go:42: Cache hit
+ERROR: 2024/09/26 00:14:30 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:14:30 database.go:55: Cache stored
+ERROR: 2024/09/26 00:14:30 blog.go:327: Failed to open blog file open blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob: no such file or directory
+DEBUG: 2024/09/26 00:14:34 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:14:34 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:14:34 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:14:34 database.go:42: Cache hit
+ERROR: 2024/09/26 00:14:34 blog.go:327: Failed to open blog file open blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob: no such file or directory
+ERROR: 2024/09/26 00:15:15 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:15:15 database.go:55: Cache stored
+ERROR: 2024/09/26 00:15:17 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:15:17 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:15:17 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:15:17 database.go:42: Cache hit
+ERROR: 2024/09/26 00:15:17 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:15:17 database.go:55: Cache stored
+INFO: 2024/09/26 00:15:17 blog.go:324: Attempting to open blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob
+ERROR: 2024/09/26 00:15:17 blog.go:329: Failed to open blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob Error: open blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob: no such file or directory
+ERROR: 2024/09/26 00:15:56 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:15:56 database.go:55: Cache stored
+ERROR: 2024/09/26 00:15:57 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:15:57 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:15:57 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:15:57 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:15:57 database.go:42: Cache hit
+ERROR: 2024/09/26 00:15:57 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:15:57 database.go:55: Cache stored
+ERROR: 2024/09/26 00:15:57 blog.go:327: Failed to open blog file open blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob: no such file or directory
+ERROR: 2024/09/26 00:16:14 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:16:14 database.go:55: Cache stored
+ERROR: 2024/09/26 00:16:15 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:16:15 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:16:15 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:16:15 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:16:15 database.go:42: Cache hit
+ERROR: 2024/09/26 00:16:15 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:16:15 database.go:55: Cache stored
+ERROR: 2024/09/26 00:16:15 blog.go:327: Failed to open blog file open blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob: no such file or directory
+ERROR: 2024/09/26 00:16:56 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:16:56 database.go:55: Cache stored
+ERROR: 2024/09/26 00:16:56 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:16:56 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:16:56 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:16:56 database.go:42: Cache hit
+INFO: 2024/09/26 00:16:56 blog.go:316: User ID: 61b9a42a-3677-49df-a020-95952739e9f9
+DEBUG: 2024/09/26 00:16:56 database.go:42: Cache hit
+INFO: 2024/09/26 00:16:56 blog.go:320: Querying blog posts for author: admin
+ERROR: 2024/09/26 00:16:56 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:16:56 database.go:55: Cache stored
+INFO: 2024/09/26 00:16:56 blog.go:332: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob
+ERROR: 2024/09/26 00:16:56 blog.go:336: Failed to open blog file open blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob: no such file or directory
+ERROR: 2024/09/26 00:17:24 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:17:24 database.go:55: Cache stored
+ERROR: 2024/09/26 00:17:25 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:17:25 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:17:25 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:17:25 database.go:42: Cache hit
+INFO: 2024/09/26 00:17:25 blog.go:316: User ID: 61b9a42a-3677-49df-a020-95952739e9f9
+DEBUG: 2024/09/26 00:17:25 database.go:42: Cache hit
+INFO: 2024/09/26 00:17:25 blog.go:320: Querying blog posts for author: admin
+ERROR: 2024/09/26 00:17:25 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:17:25 database.go:55: Cache stored
+INFO: 2024/09/26 00:17:25 blog.go:332: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob
+ERROR: 2024/09/26 00:17:25 blog.go:337: Failed to open blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob Error: open blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727308864/blogpost.gob: no such file or directory
+ERROR: 2024/09/26 00:18:40 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:18:40 database.go:55: Cache stored
+ERROR: 2024/09/26 00:18:50 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:18:50 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:18:50 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:18:50 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:18:50 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:18:50 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:18:54 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:18:54 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:18:54 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:18:54 database.go:42: Cache hit
+INFO: 2024/09/26 00:18:54 blog.go:316: User ID: 61b9a42a-3677-49df-a020-95952739e9f9
+DEBUG: 2024/09/26 00:18:54 database.go:42: Cache hit
+INFO: 2024/09/26 00:18:54 blog.go:320: Querying blog posts for author: admin
+ERROR: 2024/09/26 00:18:54 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:18:54 database.go:55: Cache stored
+INFO: 2024/09/26 00:18:54 blog.go:332: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309930/blogpost.gob
+DEBUG: 2024/09/26 00:19:08 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:19:09 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:19:09 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:19:09 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:19:09 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:19:11 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:19:11 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:19:11 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:19:11 database.go:42: Cache hit
+INFO: 2024/09/26 00:19:11 blog.go:316: User ID: 61b9a42a-3677-49df-a020-95952739e9f9
+DEBUG: 2024/09/26 00:19:11 database.go:42: Cache hit
+INFO: 2024/09/26 00:19:11 blog.go:320: Querying blog posts for author: admin
+ERROR: 2024/09/26 00:19:11 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:19:11 database.go:55: Cache stored
+INFO: 2024/09/26 00:19:11 blog.go:332: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309930/blogpost.gob
+INFO: 2024/09/26 00:19:11 blog.go:332: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309948/blogpost.gob
+DEBUG: 2024/09/26 00:20:03 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:20:03 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:20:03 database.go:42: Cache hit
+INFO: 2024/09/26 00:20:03 blog.go:316: User ID: 61b9a42a-3677-49df-a020-95952739e9f9
+DEBUG: 2024/09/26 00:20:03 database.go:42: Cache hit
+INFO: 2024/09/26 00:20:03 blog.go:320: Querying blog posts for author: admin
+DEBUG: 2024/09/26 00:20:03 database.go:42: Cache hit
+INFO: 2024/09/26 00:20:03 blog.go:332: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309930/blogpost.gob
+INFO: 2024/09/26 00:20:03 blog.go:332: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309948/blogpost.gob
+DEBUG: 2024/09/26 00:20:16 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:20:16 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:20:17 database.go:42: Cache hit
+INFO: 2024/09/26 00:20:17 blog.go:316: User ID: 61b9a42a-3677-49df-a020-95952739e9f9
+DEBUG: 2024/09/26 00:20:17 database.go:42: Cache hit
+INFO: 2024/09/26 00:20:17 blog.go:320: Querying blog posts for author: admin
+DEBUG: 2024/09/26 00:20:17 database.go:42: Cache hit
+INFO: 2024/09/26 00:20:17 blog.go:332: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309930/blogpost.gob
+INFO: 2024/09/26 00:20:17 blog.go:332: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309948/blogpost.gob
+ERROR: 2024/09/26 00:21:56 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:21:56 database.go:55: Cache stored
+ERROR: 2024/09/26 00:21:57 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:21:57 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:21:57 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:21:57 database.go:42: Cache hit
+INFO: 2024/09/26 00:21:57 blog.go:317: User ID: 61b9a42a-3677-49df-a020-95952739e9f9
+DEBUG: 2024/09/26 00:21:57 database.go:42: Cache hit
+INFO: 2024/09/26 00:21:57 blog.go:321: Querying blog posts for author: admin
+ERROR: 2024/09/26 00:21:57 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:21:57 database.go:55: Cache stored
+INFO: 2024/09/26 00:21:57 blog.go:333: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309930/blogpost.gob
+INFO: 2024/09/26 00:21:57 blog.go:333: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309948/blogpost.gob
+ERROR: 2024/09/26 00:22:04 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:22:04 database.go:55: Cache stored
+ERROR: 2024/09/26 00:22:05 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:22:05 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:22:05 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:22:05 database.go:42: Cache hit
+INFO: 2024/09/26 00:22:05 blog.go:317: User ID: 61b9a42a-3677-49df-a020-95952739e9f9
+DEBUG: 2024/09/26 00:22:05 database.go:42: Cache hit
+INFO: 2024/09/26 00:22:05 blog.go:321: Querying blog posts for author: admin
+ERROR: 2024/09/26 00:22:05 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:22:05 database.go:55: Cache stored
+INFO: 2024/09/26 00:22:05 blog.go:333: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309930/blogpost.gob
+INFO: 2024/09/26 00:22:05 blog.go:333: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309948/blogpost.gob
+ERROR: 2024/09/26 00:22:24 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:22:24 database.go:55: Cache stored
+ERROR: 2024/09/26 00:22:25 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:22:25 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:22:25 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:22:25 database.go:42: Cache hit
+INFO: 2024/09/26 00:22:25 blog.go:317: User ID: 61b9a42a-3677-49df-a020-95952739e9f9
+DEBUG: 2024/09/26 00:22:25 database.go:42: Cache hit
+INFO: 2024/09/26 00:22:25 blog.go:321: Querying blog posts for author: admin
+ERROR: 2024/09/26 00:22:25 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:22:25 database.go:55: Cache stored
+INFO: 2024/09/26 00:22:25 blog.go:333: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309930/blogpost.gob
+INFO: 2024/09/26 00:22:25 blog.go:333: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309948/blogpost.gob
+ERROR: 2024/09/26 00:22:46 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:22:46 database.go:55: Cache stored
+ERROR: 2024/09/26 00:22:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:22:59 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:22:59 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:22:59 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:22:59 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:22:59 database.go:61: Cache invalidated
+ERROR: 2024/09/26 00:23:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:23:00 database.go:55: Cache stored
+DEBUG: 2024/09/26 00:23:00 database.go:42: Cache hit
+DEBUG: 2024/09/26 00:23:00 database.go:42: Cache hit
+INFO: 2024/09/26 00:23:00 blog.go:317: User ID: 61b9a42a-3677-49df-a020-95952739e9f9
+DEBUG: 2024/09/26 00:23:00 database.go:42: Cache hit
+INFO: 2024/09/26 00:23:00 blog.go:321: Querying blog posts for author: admin
+ERROR: 2024/09/26 00:23:00 database.go:34: Key not found in cache
+DEBUG: 2024/09/26 00:23:00 database.go:55: Cache stored
+INFO: 2024/09/26 00:23:00 blog.go:333: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309930/blogpost.gob
+INFO: 2024/09/26 00:23:00 blog.go:333: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727309948/blogpost.gob
+INFO: 2024/09/26 00:23:00 blog.go:333: Opening blog file at path: blogs/61b9a42a-3677-49df-a020-95952739e9f9/1727310179/blogpost.gob

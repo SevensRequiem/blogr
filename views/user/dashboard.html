@@ -1,0 +1,316 @@
+{{define "content"}}
+<main>
+    <section class="section is-medium">
+        <div class="container has-text-centered content is-large box">
+            <h2 class="title is-1">Dashboard</h2>
+            <p>Welcome back, {{.User.Username}}!</p>
+            <p>Click the button below to create a new post.</p>
+            <a class="button is-primary" href="#" onclick="newPost()">Create Post</a>
+        </div>
+    </section>
+{{if .User.Premium}}
+    <section>
+        <div class="container has-text-centered">
+            <h2 class="title is-2">Webhook</h2>
+            <!--input form for updating webhook-->
+            <form action="/api/user/webhook" method="POST">
+                <div class="field">
+                    <label class="label">Webhook URL</label>
+                    <div class="control">
+                        <input class="input" type="url" name="webhook" value="{{.User.Webhook}}">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Update Webhook</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+{{end}}
+    <!--posts-->
+
+
+    <div id="user-posts" class="container">
+        <h2 class="title is-2">Your Posts</h2>
+        <div class="select">
+            <select id="post-limit">
+                <option value="10" selected>10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+        <div id="user-posts-inner" class="columns is-multiline is-centered">
+            asd
+        </div>
+    </div>
+    <script>
+        const getUserPosts = async () => {
+            try {
+                const limit = document.getElementById("post-limit").value;
+                const response = await axios.get(`/api/user/posts?page=1&limit=${limit}`);
+                console.log(response);
+                const posts = response.data.slice(1); 
+                const userPostsInner = document.getElementById("user-posts-inner");
+                userPostsInner.innerHTML = '';
+                posts.forEach(post => {
+                    const postElement = document.createElement("div");
+                    postElement.innerHTML = `
+                        <div class="card">
+                            <div class="card-image has-text-centered">
+                                <figure class="image is-4by3">
+                                    <img src="/i/${post.author}/${post.blog_id}" alt="${post.title}">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media-content">
+                                    <h3 class="title is-4">${post.title}</h3>
+                                    <p>${post.content}</p>
+                                    <p><strong>Tags:</strong> ${post.tags}</p>
+                                    <p><strong>Date:</strong> ${new Date(post.date).toLocaleDateString()}</p>
+                                    <p><strong>Views:</strong> ${post.views}</p>
+                                    <a class="button is-primary" href="/u/${post.author}/${post.blog_id}">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    userPostsInner.appendChild(postElement);
+                });
+            } catch (error) {
+                console.error("Error fetching user posts:", error); // Log any errors
+            }
+        }
+    
+        document.getElementById("post-limit").addEventListener("change", getUserPosts);
+    
+        // Initial load
+        getUserPosts();
+    </script>
+    <!--new post modal-->
+    <div id="newPostModal" class="modal">
+        <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+        <div class="modal-inner">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <form id="newPostForm" class="container has-text-white has-text-centered" enctype="multipart/form-data">
+                    <h2 class="title is-2">Create Post</h2>
+                    <div>
+                        <label for="postTitle">Title</label>
+                        <input type="text" id="postTitle" name="title" required>
+                    </div>
+                    <div>
+                        <label for="postTags">Tags</label>
+                        <input type="text" id="postTags" name="tags" placeholder="Comma separated tags">
+                    </div>
+                    <div>
+                        <label for="postImage">Image</label>
+                        <input type="file" id="postImage" name="image">
+                    </div>
+                    <label for="editor-container">Content</label>
+                    <div id="editor-container"></div>
+                    <button type="submit" class="button is-primary">Create Post</button>
+                </form>
+            </div>
+            <div id="preview"></div>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+    </div>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const newPost = () => {
+            const modal = document.getElementById("newPostModal");
+            modal.classList.add("is-active");
+
+            const quill = new Quill('#editor-container', {
+                theme: 'snow'
+            });
+
+
+    
+            // Update preview on text change
+            quill.on('text-change', () => {
+                const preview = document.getElementById("preview");
+                preview.innerHTML = quill.root.innerHTML;
+            });
+    
+            const form = document.getElementById("newPostForm");
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const title = document.getElementById("postTitle").value;
+                const tags = document.getElementById("postTags").value;
+                const image = document.getElementById("postImage").files[0];
+                const content = quill.root.innerHTML;
+    
+                // Use FormData to handle file uploads
+                const formData = new FormData();
+                formData.append("title", title);
+                formData.append("tags", tags);
+                formData.append("image", image);
+                formData.append("content", content);
+    
+                try {
+                    const response = await axios.post("/api/user/post", formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    });
+                    console.log(response);
+                    if (response.status === 200) {
+                        window.location.reload();
+                    }
+                } catch (error) {
+                    console.error("Error creating post:", error);
+                }
+            });
+        }
+    
+        const closeModal = () => {
+            const modal = document.getElementById("newPostModal");
+            modal.classList.remove("is-active");
+        }
+    </script>
+</main>
+<style>
+    .modal-inner {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    #editor-container {
+        height: 300px;
+    }
+    #preview {
+        margin-top: 1rem;
+    }
+    .modal-background {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    .modal-content {
+        background-color: rgb(29, 29, 29);
+        padding: 1rem;
+    }
+    .modal-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .modal-close.is-large {
+        font-size: 2rem;
+    }
+    .modal-close.is-large:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .modal-close.is-large:active {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    .modal-close.is-large:focus {
+        outline: none;
+    }
+    .modal-close.is-large[aria-label="close"]::before {
+        content: "✕";
+    }
+    .modal-close.is-large[aria-label="close"]:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .modal-close.is-large[aria-label="close"]:active {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    .modal-close.is-large[aria-label="close"]:focus {
+        outline: none;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+    }
+    .modal.is-active {
+        display: block;
+    }
+    .modal-content {
+        margin: 20% auto;
+        padding: 1rem;
+        position: relative;
+    }
+    .modal-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1rem;
+    }
+    .modal-close.is-large {
+        font-size: 2rem;
+    }
+
+    #newPostModal {
+        color: #ffffff;
+    }
+
+    #newPostModal input, #newPostModal textarea {
+        background-color: #363636;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+        border-radius: 4px;
+        margin: 0.5rem 0;
+    }
+
+    #newPostModal input[type="file"] {
+        background-color: #363636;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+    }
+
+    #newPostModal input[type="file"]:hover {
+        background-color: #363636;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+    }
+
+    #newPostModal input[type="file"]:focus {
+        background-color: #363636;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+    }
+
+    #newPostModal button {
+        background-color: #3273dc;
+        color: #ffffff;
+    }
+
+    #newPostModal button:hover {
+        background-color: #363636;
+        color: #ffffff;
+    }
+
+    #newPostModal button:active {
+        background-color: #363636;
+        color: #ffffff;
+    }
+
+    #newPostModal button:focus {
+        background-color: #363636;
+        color: #ffffff;
+    }
+
+    #newPostModal button.is-primary {
+        background-color: #3273dc;
+        color: #ffffff;
+    }
+
+    #newPostModal button.is-primary:hover {
+        background-color: #363636;
+        color: #ffffff;
+    }
+
+    #newPostModal button.is-primary:active {
+        background-color: #363636;
+        color: #ffffff;
+    }
+</style>
+{{end}}

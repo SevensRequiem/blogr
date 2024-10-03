@@ -5,9 +5,12 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 
-	"blogr.moe/database"
-	"blogr.moe/routes"
+	"blogr.moe/backend/auth"
+	"blogr.moe/backend/database"
+	"blogr.moe/backend/routes"
+	"blogr.moe/backend/utils/scheduler"
 	"github.com/joho/godotenv"
 
 	"github.com/gorilla/sessions"
@@ -18,7 +21,6 @@ import (
 
 func main() {
 	e := echo.New()
-	database.Init()
 	err := godotenv.Load() // Load .env file from the current directory
 	if err != nil {
 		log.Fatalf("Error loading .env file: %v", err)
@@ -30,6 +32,7 @@ func main() {
 	}
 	store := sessions.NewCookieStore([]byte(secret))
 	store.Options = &sessions.Options{
+		Domain:   baseUrl,
 		Path:     "/",
 		MaxAge:   86400,
 		HttpOnly: false,
@@ -37,35 +40,31 @@ func main() {
 		SameSite: http.SameSiteStrictMode,
 	}
 
-	e.Use(session.Middleware(store))
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Format: "${id} ${time_rfc3339} ${remote_ip} > ${method} > ${uri} > ${status} ${latency_human}\n",
 	}))
 	e.Use(middleware.Recover())
-	e.Use(middleware.BodyLimit("11M"))
 	e.Use(middleware.RequestID())
-	e.Use(middleware.RateLimiter(middleware.NewRateLimiterMemoryStore(20)))
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{
-			"https://" + os.Getenv("BASE_URL"),
-			"http://" + os.Getenv("BASE_URL"),
-		},
-		AllowMethods: []string{http.MethodGet, http.MethodPut, http.MethodPost, http.MethodDelete},
-		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+		AllowOrigins:     []string{"https://dev.blogr.moe"},
+		AllowCredentials: true, // Allow credentials (cookies)
+		AllowMethods:     []string{echo.GET, echo.POST, echo.PUT, echo.DELETE},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "X-CSRF-Token", "Authorization", "X-CSRF-Token"},
+	}))
+	e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
+		TokenLookup:    "cookie:csrf",
+		CookieDomain:   baseUrl,
+		CookieName:     "csrf",
+		CookieMaxAge:   86400,
+		CookieSecure:   true,
+		CookieHTTPOnly: false,
+		CookieSameSite: http.SameSiteStrictMode,
 	}))
 
 	e.Use(middleware.SecureWithConfig(middleware.SecureConfig{
 		XSSProtection:      "1; mode=block",
 		ContentTypeNosniff: "nosniff",
-	}))
-	e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
-		TokenLookup:    "cookie:_csrf",
-		CookiePath:     "/",
-		CookieDomain:   baseUrl,
-		CookieSecure:   true,
-		CookieHTTPOnly: true,
-		CookieSameSite: http.SameSiteStrictMode,
 	}))
 
 	accesslog, err := os.OpenFile("access.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
@@ -77,17 +76,28 @@ func main() {
 		Output: accesslog, // Set the Output to the log file
 	}))
 	routes.RegisterRoutes(e)
+	c := e.NewContext(nil, nil)
+
+	s24h := scheduler.NewScheduler()
+	s24h.ScheduleTask(scheduler.Task{
+		Action: func() {
+			auth.IsPaymentActive(c)
+		},
+		Duration: 24 * time.Hour,
+	})
+	go s24h.Run()
+	database.GetTotalPostCount()
+	database.GetTotalUserCount()
 
 	portStr := os.Getenv("PORT")
 	port, err := strconv.Atoi(portStr)
 	if err != nil {
 		log.Fatal("PORT is not set")
 	}
+	//backups.BackupFiles()
 	//mail.TestMail()
-	//go tests.Test()
-	//go env.RegenEncryptedKey()
-	//go env.RegenSecretKey()
-	//go plugins.LoadPlugins(e)
 	//queue.NewQueueManager().ProcessAll()
-	e.StartTLS(":"+strconv.Itoa(port), "certificates/cert.pem", "certificates/key.pem")
+	e.Use(session.Middleware(store))
+
+	e.StartTLS(":"+strconv.Itoa(port), "backend/certificates/cert.pem", "backend/certificates/key.pem")
 }

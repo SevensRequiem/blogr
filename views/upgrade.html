@@ -1,0 +1,29 @@
+{{define "content"}}
+<div id="upgrade">
+  <h1>Subscribe to Premium</h1>
+  <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+<stripe-pricing-table pricing-table-id="prctbl_1Q3VW9C06XYmpb7Gr1HbtWzu"
+publishable-key="pk_test_51Q3BCQC06XYmpb7G4NfpCp7RfBau4A65hH9mPn5FRpBL0aXd2Fx9PggDxE3zBouWte7hyFViwLXMcOzsHOpydKEC00LRpAdUHQ">
+</stripe-pricing-table>
+</div>
+<style>
+  #upgrade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  #checkout-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #6772e5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+</style>
+{{end}}

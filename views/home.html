@@ -1,184 +1,109 @@
 {{define "content"}}
-<div id="home">
-    <div id="intro">
-    <span id="subintro">The best blogging platform on the web</span>
-    <p>
-        Blogr is an open source and free, blog platform.
-    </p>
-    <div id="stats">
-        <p>Blogr has over {{.UserCount}} users and {{.Posts}} posts.</p>
-    </div>
-    </div>
-<div id="features">
-    <div class="feature">
-        <h2>Easy to use</h2>
-        <p>Blogr is easy to use and has a simple interface.</p>
-    </div>
-    <div class="feature">
-        <h2>Customizable</h2>
-        <p>Blogr allows you to customize your blog with themes and plugins.</p>
-    </div>
-    <div class="feature">
-        <h2>Open Source</h2>
-        <p>Blogr is open source and free to use.</p>
-    </div>
-</div>
+<main>
+    <!--hero-->
+    <section class="hero is-black is-medium is-bold">
+            <div class="hero-body">
+              <div class="container has-text-centered">
+                <h1 class="title is-1 has-text-info">
+                  Blogr
+                </h1>
+                <h2 class="subtitle">
+                    A simple blog platform
+                </h2>
+              </div>
+              <div class="container has-text-centered mt-6">
+                <div class="columns is-centered">
+                    <div class="column is-one-third has-text-centered">
+                        <p class="title is-2" id="poststat">0</p>
+                        <p class="subtitle is-4">Posts</p>
+                    </div>
+                    <div class="column is-one-third has-text-centered">
+                        <p class="title is-2" id="commentstat">0</p>
+                        <p class="subtitle is-4">Comments</p>
+                    </div>
+                    <div class="column is-one-third has-text-centered">
+                        <p class="title is-2" id="userstat">0</p>
+                        <p class="subtitle is-4">Users</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </section>
 
-<div id="latestusers">
-    <h2>Latest Blogs</h2>
-    <ul>
-        {{range .LatestBlogs}}
-        <li><a href="/blog/{{.ID}}">{{.Title}}</a></li>
-        {{end}}
-    </ul>
-</div>
-</div>
+    <!--feature cards-->
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left is-hidden-mobile">
+                                    <figure>
+                                        <i class="fas fa-pen"></i>
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">Write</p>
+                                    <p>Write and publish your own blog posts.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left is-hidden-mobile">
+                                    <figure>
+                                        <i class="fas fa-comment"></i>
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">Comment</p>
+                                    <p>Comment on other users' blog posts.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left is-hidden-mobile">
+                                    <figure>
+                                        <i class="fas fa-share"></i>
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">Share</p>
+                                    <p>Share your blog posts with others.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<style>
-    #home {
-        margin: 0 auto;
-        width: 80%;
-        text-align: center;
-        text-shadow: 1px 3px 14px #00A9A5;
-    }
-    #home h1 {
-        margin-top: 0;
-    }
-    #home h2 {
-        margin-top: 2rem;
-    }
-    #home ul {
-        list-style-type: none;
-        margin-top: 0;
-        padding: 0;
-    }
-    #home li {
-        margin-top: 0.5rem;
-    }
-    #home p {
-        margin-top: 0.5rem;
-    }
-    #home a {
-        color: #00A9A5;
-    }
-    #home a:hover {
-        text-decoration: none;
-    }
-    #home a:visited {
-        color: #00A9A5;
-    }
-    #home a:active {
-        color: #00A9A5;
-    }
+    </section>
 
-    #intro {
-        margin-top: 9rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.title = 'Blogr - Home';
+    });
 
-    #intro h1 {
-        color: #00a94c;
-        font-size: 5rem;
-        font-weight: bold;
-    }
+    const statsurl = '/api/stats';
+    fetch(statsurl)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('poststat').textContent = data.post_count;
+            document.getElementById('commentstat').textContent = data.comment_count;
+            document.getElementById('userstat').textContent = data.user_count;
+        });
+</script>
 
-    #subintro {
-        color: #00a94c;
-        font-size: 3rem;
-        font-weight: bold;
-    }
-
-
-
-    #features {
-        display: flex;
-        justify-content: space-around;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-top: 2rem;
-    }
-
-    .feature {
-        min-width: 200px;
-        width: 200px;
-        padding: 1rem;
-        background: linear-gradient(to bottom, #00a9a675, #030303);
-        border-radius: 25px;
-    }
-
-    .feature:hover{
-        background: linear-gradient(to bottom, #00a9a6, #030303);
-        border: 2px solid #00a9a6;
-    }
-
-    .feature h2 {
-        color: #ffffff;
-    }
-
-    .feature p {
-        color: #ffffff;
-        font-style: italic;
-    }
-
-
-
-    #home button {
-        padding: 0.5rem 1rem;
-        border: 1px solid #00A9A5;
-        border-radius: 5px;
-        background-color: #00A9A5;
-        color: white;
-        margin-top: 1rem;
-        cursor: pointer;
-    }
-
-    #home button a {
-        color: white;
-        text-decoration: none;
-    }
-
-    #home button a:hover {
-        text-decoration: none;
-    }
-
-    #home button a:visited {
-        color: white;
-    }
-
-    #home button:hover {
-        background-color: #007D79;
-    }
-
-    #home button:active {
-        background-color: #005D59;
-    }
-
-    #stats {
-        margin-top: 2rem;
-    }
-
-    #latestusers {
-        margin-top: 2rem;
-    }
-
-    #latestusers ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    #latestusers li {
-        margin-top: 0.5rem;
-    }
-
-    #latestusers a {
-        color: #00A9A5;
-    }
-
-    #latestusers a:hover {
-        text-decoration: none;
-    }
-</style>
 {{end}}

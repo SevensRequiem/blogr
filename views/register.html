@@ -1,0 +1,81 @@
+{{define "content"}}
+<main>
+    <section class="section is-medium container">
+        <div class="container has-text-centered content is-large box">
+            <h2 class="title is-1">Register</h2>
+            <form action="/register" method="post">
+                <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control">
+                        <input class="input" type="text" name="username" placeholder="Username">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                        <input class="input" type="email" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control">
+                        <input class="input" type="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary registerbutton" type="submit">Register</button>
+                    </div>
+                </div>
+            </form>
+            <p>Already have an account? <a href="/login">Login</a></p>
+        </div>
+    </section>
+
+    <article class="message is-success container registersuccess" style="display: none;">
+        <div class="message-header">
+            <p>Success</p>
+        </div>
+        <div class="message-body">
+            You have successfully registered. You will be redirected to the login page.
+        </div>
+    </article>
+
+    <article class="message is-danger container registerfail" style="display: none;">
+        <div class="message-header">
+            <p>Failed</p>
+        </div>
+        <div class="message-body">
+            Registration failed. Please try again.
+        </div>
+    </article>
+</main>
+<script>
+    const registerUrl = "/api/auth/register";
+    const registerForm = document.querySelector("form");
+    registerForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(registerForm);
+        const data = Object.fromEntries(formData);
+        document.querySelector(".registerbutton").classList.add("is-loading");
+        try {
+            const response = await axios.post(registerUrl, data);
+            console.log(response);
+            if (response.status === 200) {
+                document.querySelector(".registerfail").style.display = "none";
+                document.querySelector(".registersuccess").style.display = "block";
+                setTimeout(() => {
+                    window.location.href = "/login";
+                }, 2000);
+            } else {
+                document.querySelector(".registerfail").style.display = "block";
+                document.querySelector(".registerbutton").classList.remove("is-loading");
+            }
+        } catch (error) {
+            document.querySelector(".registerfail").style.display = "block";
+            document.querySelector(".registerbutton").classList.remove("is-loading");
+            console.error(error);
+        }
+    });
+</script>
+{{end}}

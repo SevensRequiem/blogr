@@ -1,0 +1,50 @@
+<header>
+    <div>
+        <nav class="navbar is-black">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="/">
+                <h1 class="title is-4 has-text-info">Blogr</h1>
+              </a>
+            </div>
+            <div id="navbarMenuHero9" class="navbar-menu">
+              <div class="navbar-end">
+                <a class="navbar-item" href="/">
+                  Home
+                </a>
+                <a class="navbar-item" href="/premium">
+                  Premium
+                </a>
+                {{if .User}}
+                <span class="navbar-item">
+                  <a class="button is-link" href="/dashboard">
+                    <span class="icon">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <span>Dashboard</span>
+                  </a>
+                </span>
+                <span class="navbar-item">
+                  <a class="button is-link" href="/logout">
+                    <span class="icon">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <span>Logout</span>
+                  </a>
+                </span>
+                {{else}}
+                <span class="navbar-item">
+                  <a class="button is-link" href="/login">
+                    <span class="icon">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <span>Login</span>
+                  </a>
+                </span>
+                {{end}}
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+</header>

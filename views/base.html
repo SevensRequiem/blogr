@@ -3,378 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/c0dbd754ad.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <title>Blogr: A simple blog application</title>
+    
+    <style>
+        @font-face {
+            font-family: 'Ubuntu';
+            src: url('/assets/UbuntuMono-R.ttf');
+        }
+        * {
+            font-family: 'Ubuntu', sans-serif;
+        }
+    </style>
+    <title>Blogr: A simple blog platform</title>
 </head>
-<body>
-<main>
-    <header>
-    <h1><span class="icon">
-        <i class="fa-solid fa-book"></i></span>Blogr <span id="subtitle">A simple blog application</span></h1>
-    <div id="navcontainer">
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/posts">Posts</a></li>
-            <li><a href="/upgrade">Upgrade</a>
-                        
-        </ul>
-    </nav>
-    <div id="search">
-        <form action="/search" method="get">
-            <input type="text" name="q" placeholder="Search...">
-            <input type="submit" value="Search">
-        </form>
-    </div>
-    {{if not .User}}
-    <nav>
-        <ul>
-            <li><a href="#" onclick="loginForm()">Login</a></li>
-            <li><a href="#" onclick="registerForm()">Register</a></li>
-        </ul>
-    </nav>
-    {{end}}
-    </div>
-    {{if not .User}}
-    <div id="registerform">
-        <h2>Register</h2>
-        <form id="registerForm" action="/register" method="post">
-            <input type="text" name="regemail" placeholder="Email">
-            <input type="text" name="regusername" placeholder="Username">
-            <input type="password" name="regpassword" placeholder="Password" id="password">
-            <button type="submit">Register</button>
-            <div id="registerStatus"></div>
-        </form>
-    </div>
-    <div id="loginform">
-        <h2>Login</h2>
-        <form id="loginForm" action="/login" method="post">
-            <input type="text" name="loginusername" placeholder="Username">
-            <input type="password" name="loginpassword" placeholder="Password" id="password">
-            <button type="submit">Login</button>
-            <a href="#">Forgot password?</a>
-            <div id="loginStatus"></div>
-        </form>
-    </div>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            let loginusername = document.querySelector('input[name="loginusername"]').value;
-            let loginpassword = document.querySelector('input[name="loginpassword"]').value;
-            
-            axios.post('/login', {
-                username: loginusername,
-                password: loginpassword
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(function(response) {
-                if (response.data.success) {
-                    window.location.href = '/';
-                } else {
-                    document.getElementById('loginStatus').innerHTML = response.data.message;
-                }
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-        });
-
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            let regemail = document.querySelector('input[name="regemail"]').value;
-            let regusername = document.querySelector('input[name="regusername"]').value;
-            let regpassword = document.querySelector('input[name="regpassword"]').value;
-            
-            axios.post('/register', {
-                email: regemail,
-                username: regusername,
-                password: regpassword
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(function(response) {
-                if (response.data.success) {
-                    window.location.href = '/';
-                } else {
-                    document.getElementById('loginStatus').innerHTML = response.data.message;
-                }
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-        });
-
-        function loginForm() {
-            if (document.getElementById('loginform').style.display === 'flex') {
-                document.getElementById('loginform').style.display = 'none';
-            } else {
-                document.getElementById('loginform').style.display = 'flex';
-                document.getElementById('registerform').style.display = 'none';
-            }
-        }
-        function registerForm() {
-            if (document.getElementById('registerform').style.display === 'flex') {
-                document.getElementById('registerform').style.display = 'none';
-            } else {
-                document.getElementById('registerform').style.display = 'flex';
-                document.getElementById('loginform').style.display = 'none';
-            }
-        }
-    </script>
-    {{else if .User}}
-    <div id="user">
-        <span>Welcome, {{.User.Username}} <i class="fa-solid fa-chevron-down"></i></span>
-        <div id="userdropdown">
-            <a href="/user/profile">Profile</a>
-            <a href="/user/settings">Settings</a>
-            <a href="#" onclick="logout()">Logout</a>
+<body data-theme="dark">
+    <div id="static"></div>
+    {{template "header.html" .}}
+    {{template "content" .}}
+    <!--fixed to center of screen-->
+    <div class="columns cookies">
+        <div class="column">
+            <article class="message is-dark m-6">
+                <div class="message-header">
+                    <div class="icon-text">
+                        <span class="icon has-text-info">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span>Cookies</span>
+                    </div>
+                    <button class="delete cookiedecline" aria-label="delete"></button>
+                </div>
+                <div class="message-body has-text-centered">
+                    <span>Accept the site's cookies to continue using the site. Cookies are used to improve the user experience.</span>
+                    <div class="message-footer has-text-centered mt-4">
+                        <button class="button is-primary cookieaccept">Accept</button>
+                        <button class="button is-danger cookiedecline">Decline</button>
+                    </div>
+                </div>
+            </article>
         </div>
-        <script>
-            function logout() {
-                axios.get('/logout')
-                .then(function(response) {
-                    if (response.data.success) {
-                        window.location.href = '/';
-                    }
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
-            }
-        </script>
     </div>
-    {{end}}
-    </header>
-    <hr>
-    <div id="content">
-        {{template "content" .}}
-    </div>
-    <footer>
-        <hr>
-        <p>&copy; 2024 Blogr</p>
-    </footer>
-</main>
+    {{template "footer.html" .}}
 </body>
 </html>
 <style>
-    @font-face {
-        font-family: 'rabt';
-        src: url(/assets/whitrabt1.ttf) format('truetype');
-    }
-    * {
-        font-family: 'rabt', Arial, sans-serif;
-        color: #fff;
-    }
-    .icon {
-        color: #00A9A5;
-        margin: 0 0.5rem;
-    }
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #000;
-    }
-    main {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-    header {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 1rem;
-        background-color: #000;
-        color: white;
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    header h1 {
-        margin: 0;
-    }
-
-    #subtitle {
-        font-size: 0.8rem;
-        font-weight: normal;
-    }
-
-    nav ul, #search {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    #search input[type="text"] {
-        border-radius: 5px;
-        border: 1px solid #000;
-        color: #000;
-    }
-
-    #search input[type="submit"] {
-        border-radius: 5px;
-        border: 1px solid #000;
-        background-color: #00A9A5;
-        color: white;
-    }
-
-    nav ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    nav ul li {
-        display: inline;
-        margin-right: 1rem;
-    }
-
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-    }
-
-    nav ul li a:hover {
-        color: #00A9A5;
-    }
-    #navcontainer {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 700px;
-    }
-
-    #loginform, #registerform {
+        .cookies {
         position: fixed;
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        right: 50%;
         top: 50%;
-        transform: translate(50%, -50%);
-        width: 300px;
-        border: 1px solid #00A9A5;
-        background-color: #000000be;
-        padding: 20px;
-        border-radius: 5px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000; /* Ensure it is above other elements */
     }
+</style>
 
-    #loginform form, #registerform form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
+<script>
+    const cookieaccept = document.querySelector('.cookieaccept');
+    const cookiedecline = document.querySelector('.cookiedecline');
+    const cookies = document.querySelector('.cookies');
 
-    #loginform input[type="text"], 
-    #loginform input[type="password"], 
-    #registerform input[type="text"], 
-    #registerform input[type="password"] {
-        border-radius: 5px;
-        border: 1px solid #000;
-        color: #000;
-    }
-
-    #loginform button, 
-    #registerform button {
-        border-radius: 5px;
-        border: 1px solid #000;
-        background-color: #00A9A5;
-        color: white;
-    }
-
-    #loginform button:hover, #registerform button:hover {
-        background-color: #007D79;
-    }
-    hr {
-        margin: 0;
-        height: 2px;
-        background: linear-gradient(to right, #00a9a625, #00A9A5, #00a9a625);
-        border: 0;
-    }
-
-    #content {
-        width: 100%;
-        height: 100%;
-        min-height: 100vh;
-        margin: 0 auto;
-        padding: 0;
-        background: linear-gradient(to bottom, #00a9a628 5%, #00a9a628 5%, #000000 20%);
-    }
-
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #000;
-        color: white;
-        text-align: center;
-    }
-
-    footer p {
-        margin: 0;
-    }
-
-    #user {
-        position: relative;
-    }
-
-    #user span {
-        cursor: pointer;
-    }
-
-    #userdropdown {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background-color: #000;
-        border: 1px solid #00A9A5;
-        border-radius: 5px;
-        padding: 10px;
-    }
-
-    #user a {
-        display: block;
-        color: white;
-        text-decoration: none;
-    }
-
-    #user i {
-        width: 5px;
-        height: 5px;
-        margin-left: 5px;
-    }
-
-    #user a:hover {
-        color: #00A9A5;
-    }
-
-    #user:hover #userdropdown {
-        display: block;
-    }
-
-    #user a {
-        margin-bottom: 5px;
+    if (document.cookie.includes('cookieconsent=accept')) {
+        cookies.style.display = 'none';
+    } else {
+        cookies.style.display = 'block';
     }
     
-    #user a:last-child {
-        margin-bottom: 0;
+    cookieaccept.addEventListener('click', () => {
+        cookies.style.display = 'none';
+        document.cookie = 'cookieconsent=accept; max-age=31536000';
+    });
+
+    cookiedecline.addEventListener('click', () => {
+        cookies.style.display = 'none';
+        document.cookie = 'cookieconsent=decline; max-age=31536000';
+    });
+
+    if (document.cookie.includes('cookieconsent=accept')) {
+        cookies.style.display = 'none';
+    } else {
+        cookies.style.display = 'block';
     }
 
-    #user a:hover {
-        background-color: #00A9A5;
+</script>
+<style>
+    mt-1 {
+        margin-top: 1rem !important;
     }
-
+    mt-2 {
+        margin-top: 2rem !important;
+    }
+    mt-3 {
+        margin-top: 3rem !important;
+    }
+    mt-4 {
+        margin-top: 4rem !important;
+    }
+    mt-5 {
+        margin-top: 5rem !important;
+    }
+    mt-6 {
+        margin-top: 6rem !important;
+    }
 
 </style>

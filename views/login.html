@@ -1,0 +1,74 @@
+{{define "content"}}
+<main>
+    <section class="section is-medium">
+        <div class="container has-text-centered content is-large box">
+            <h2 class="title is-1">Login</h2>
+            <form action="/login" method="post">
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                        <input class="input" type="text" name="email" placeholder="email">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control">
+                        <input class="input" type="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary loginbutton" type="submit">Login</button>
+                    </div>
+                </div>
+            </form>
+            <p>Don't have an account? <a href="/register">Register</a></p>
+        </div>
+    </section>
+    <article class="message is-success container loginsuccess" style="display: none;">  
+        <div class="message-header">
+          <p>Success</p>
+        </div>
+        <div class="message-body">
+            You have successfully logged in. You will be redirected to the dashboard.
+        </div>
+      </article>
+        <article class="message is-danger container loginfail" style="display: none;">  
+            <div class="message-header">
+            <p>Failed</p>
+            </div>
+            <div class="message-body">
+                Login failed. Please try again.
+            </div>
+        </article>
+</main>
+
+<script>
+    const loginurl = "/api/auth/login";
+    const loginform = document.querySelector("form");
+    loginform.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(loginform);
+        const data = Object.fromEntries(formData);
+        document.querySelector(".loginbutton").classList.add("is-loading");
+        try {
+            const response = await axios.post(loginurl, data);
+            console.log(response);
+            if (response.status === 200) {
+                document.querySelector(".loginfail").style.display = "none";
+                document.querySelector(".loginsuccess").style.display = "block";
+                setTimeout(() => {
+                    window.location.href = "/dashboard";
+                }, 2000);
+            } else {
+                document.querySelector(".loginfail").style.display = "block";
+                document.querySelector(".loginbutton").classList.remove("is-loading");
+            }
+        } catch (error) {
+            document.querySelector(".loginfail").style.display = "block";
+            document.querySelector(".loginbutton").classList.remove("is-loading");
+            console.error(error);
+        }
+    });
+</script>
+{{end}}

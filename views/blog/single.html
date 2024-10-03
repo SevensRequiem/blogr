@@ -1,0 +1,38 @@
+{{define "content"}}
+<main>
+    <section class="hero is-black is-medium is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1 has-text-primary">
+                    {{.Post.Title}}</h1>
+                <h2 class="subtitle">{{.Post.Author}}</h2>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="/i/{{.Post.Author}}/{{.Post.BlogID}}" alt="{{.Post.Title}}">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4">{{.Post.Title}}</p>
+                            <p class="subtitle is-6">{{.Post.Author}}</p>
+                        </div>
+                    </div>
+                    <div class="content is-medium">
+                        <p>{{.Post.Content}}</p>
+                        <span class="tag is-primary">{{.Post.Tags}}</span>
+                        <p><strong>Date:</strong> {{.Post.Date}}</p>
+                        <p><strong>Views:</strong> {{.Post.Views}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{{end}}
